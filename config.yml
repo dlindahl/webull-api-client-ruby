@@ -1,0 +1,6 @@
+generatorName: ruby
+outputDir: webull-api-client
+inputSpec: swagger.yml
+gemVersion: 1.0.0
+moduleName: WebullApiClient
+gemName: webull-api-client-ruby
