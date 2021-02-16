@@ -6,7 +6,8 @@ All URIs are relative to *https://quoteapi.webull.com/api*
 | ------ | ------------ | ----------- |
 | [**get_multi_factor_auth**](AuthenticationApi.md#get_multi_factor_auth) | **POST** /passport/verificationCode/sendCode | getMultiFactorAuth |
 | [**get_trade_token**](AuthenticationApi.md#get_trade_token) | **POST** /login | getTradeToken |
-| [**login**](AuthenticationApi.md#login) | **POST** /passport/login/v3/account | login |
+| [**login**](AuthenticationApi.md#login) | **POST** /passport/login/v5/account | login |
+| [**login_v3**](AuthenticationApi.md#login_v3) | **POST** /passport/login/v3/account | login_v3 |
 | [**logout**](AuthenticationApi.md#logout) | **GET** /passport/login/logout | logout |
 | [**refresh_token**](AuthenticationApi.md#refresh_token) | **POST** /passport/refreshToken | refreshToken |
 
@@ -159,6 +160,8 @@ No authorization required
 
 login
 
+Login v5 endpoint that is used by the web application and does not require MFA tokens
+
 ### Examples
 
 ```ruby
@@ -195,6 +198,74 @@ begin
   p data # => <PostLoginResponse>
 rescue WebullApiClient::ApiError => e
   puts "Error when calling AuthenticationApi->login_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **post_login_parameters_request** | [**PostLoginParametersRequest**](PostLoginParametersRequest.md) |  | [optional] |
+
+### Return type
+
+[**PostLoginResponse**](PostLoginResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## login_v3
+
+> <PostLoginResponse> login_v3(did, opts)
+
+login_v3
+
+Login v3 endpoint that requires MFA tokens
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::AuthenticationApi.new
+did = 'did_example' # String | Device ID
+opts = {
+  post_login_parameters_request: WebullApiClient::PostLoginParametersRequest.new # PostLoginParametersRequest | 
+}
+
+begin
+  # login_v3
+  result = api_instance.login_v3(did, opts)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling AuthenticationApi->login_v3: #{e}"
+end
+```
+
+#### Using the login_v3_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PostLoginResponse>, Integer, Hash)> login_v3_with_http_info(did, opts)
+
+```ruby
+begin
+  # login_v3
+  data, status_code, headers = api_instance.login_v3_with_http_info(did, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PostLoginResponse>
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling AuthenticationApi->login_v3_with_http_info: #{e}"
 end
 ```
 

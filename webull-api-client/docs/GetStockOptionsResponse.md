@@ -7,6 +7,7 @@
 | **change** | **String** |  | [optional] |
 | **change_ratio** | **String** |  | [optional] |
 | **close** | **String** |  | [optional] |
+| **data** | [**Array&lt;GetStockOptionsResponseData&gt;**](GetStockOptionsResponseData.md) |  | [optional] |
 | **dis_exchange_code** | **String** |  | [optional] |
 | **dis_symbol** | **String** |  | [optional] |
 | **expire_date** | **String** |  | [optional] |
@@ -24,6 +25,7 @@ instance = WebullApiClient::GetStockOptionsResponse.new(
   change: null,
   change_ratio: null,
   close: null,
+  data: null,
   dis_exchange_code: null,
   dis_symbol: null,
   expire_date: null,

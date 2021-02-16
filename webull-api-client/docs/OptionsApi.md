@@ -96,7 +96,7 @@ api_instance = WebullApiClient::OptionsApi.new
 did = 'did_example' # String | Device ID
 access_token = 'access_token_example' # String | Access token
 stock = 56 # Integer | Internal stock ticker ID
-count = 56 # Integer | 
+count = 56 # Integer | Number of contracts to return. -1 for all.
 opts = {
   include_weekly: 56, # Integer | 
   direction: WebullApiClient::OptionDirection::ALL, # OptionDirection | 
@@ -138,7 +138,7 @@ end
 | **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
 | **access_token** | **String** | Access token |  |
 | **stock** | **Integer** | Internal stock ticker ID | [default to 913243251] |
-| **count** | **Integer** |  | [default to -1] |
+| **count** | **Integer** | Number of contracts to return. -1 for all. | [default to -1] |
 | **include_weekly** | **Integer** |  | [optional][default to 1] |
 | **direction** | [**OptionDirection**](.md) |  | [optional] |
 | **expire_date** | **String** |  | [optional][default to &#39;12/16/2022&#39;] |

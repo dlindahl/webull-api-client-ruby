@@ -306,6 +306,12 @@ module WebullApiClient
           description: "No description provided",
           }
         ],
+        "AuthenticationApi.login_v3": [
+          {
+          url: "https://userapi.webullbroker.com/api",
+          description: "No description provided",
+          }
+        ],
         "AuthenticationApi.logout": [
           {
           url: "https://userapi.webullbroker.com/api",

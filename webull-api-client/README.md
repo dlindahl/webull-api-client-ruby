@@ -83,7 +83,8 @@ Class | Method | HTTP request | Description
 *WebullApiClient::AlertsApi* | [**get_alerts**](docs/AlertsApi.md#get_alerts) | **GET** /user/warning/v2/query/tickers | getAlerts
 *WebullApiClient::AuthenticationApi* | [**get_multi_factor_auth**](docs/AuthenticationApi.md#get_multi_factor_auth) | **POST** /passport/verificationCode/sendCode | getMultiFactorAuth
 *WebullApiClient::AuthenticationApi* | [**get_trade_token**](docs/AuthenticationApi.md#get_trade_token) | **POST** /login | getTradeToken
-*WebullApiClient::AuthenticationApi* | [**login**](docs/AuthenticationApi.md#login) | **POST** /passport/login/v3/account | login
+*WebullApiClient::AuthenticationApi* | [**login**](docs/AuthenticationApi.md#login) | **POST** /passport/login/v5/account | login
+*WebullApiClient::AuthenticationApi* | [**login_v3**](docs/AuthenticationApi.md#login_v3) | **POST** /passport/login/v3/account | login_v3
 *WebullApiClient::AuthenticationApi* | [**logout**](docs/AuthenticationApi.md#logout) | **GET** /passport/login/logout | logout
 *WebullApiClient::AuthenticationApi* | [**refresh_token**](docs/AuthenticationApi.md#refresh_token) | **POST** /passport/refreshToken | refreshToken
 *WebullApiClient::DividendsApi* | [**get_dividends**](docs/DividendsApi.md#get_dividends) | **GET** /v2/account/{account_id}/dividends | getDividends
@@ -187,6 +188,7 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::GetStockAnalysisResponseRatingRatingSpread](docs/GetStockAnalysisResponseRatingRatingSpread.md)
  - [WebullApiClient::GetStockAnalysisResponseTargetPrice](docs/GetStockAnalysisResponseTargetPrice.md)
  - [WebullApiClient::GetStockOptionsResponse](docs/GetStockOptionsResponse.md)
+ - [WebullApiClient::GetStockOptionsResponseData](docs/GetStockOptionsResponseData.md)
  - [WebullApiClient::GetStockOptionsResponseExpireDateList](docs/GetStockOptionsResponseExpireDateList.md)
  - [WebullApiClient::GetStockQuoteResponse](docs/GetStockQuoteResponse.md)
  - [WebullApiClient::GetTickerChartRequest](docs/GetTickerChartRequest.md)
@@ -198,6 +200,8 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::Leg](docs/Leg.md)
  - [WebullApiClient::LookupTickerResponse](docs/LookupTickerResponse.md)
  - [WebullApiClient::LookupTickerResponseList](docs/LookupTickerResponseList.md)
+ - [WebullApiClient::OptionContract](docs/OptionContract.md)
+ - [WebullApiClient::OptionContractAskList](docs/OptionContractAskList.md)
  - [WebullApiClient::OptionDirection](docs/OptionDirection.md)
  - [WebullApiClient::OptionOrder](docs/OptionOrder.md)
  - [WebullApiClient::OptionType](docs/OptionType.md)

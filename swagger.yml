@@ -882,6 +882,61 @@ paths:
   "/passport/login/v3/account":
     post:
       deprecated: false
+      description: 'Login v3 endpoint that requires MFA tokens'
+      operationId: login_v3
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostLoginParametersRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostLoginResponse'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://userapi.webullbroker.com/api'
+      summary: login_v3
+      tags:
+        - authentication
+  "/passport/login/v5/account":
+    post:
+      deprecated: false
+      description: 'Login v5 endpoint that is used by the web application and does not require MFA tokens'
       operationId: login
       parameters:
         - in: header
@@ -1167,6 +1222,7 @@ paths:
             default: 913243251
             format: int32
         - in: query
+          description: 'Number of contracts to return. -1 for all.'
           name: count
           required: true
           schema:
@@ -3870,6 +3926,19 @@ components:
           type: string
         close:
           type: string
+        data:
+          items:
+            properties:
+              call:
+                $ref: '#/components/schemas/OptionContract'
+                description: Option Contract
+              put:
+                $ref: '#/components/schemas/OptionContract'
+                description: Option Contract
+              strikePrice:
+                type: string
+            type: object
+          type: array
         disExchangeCode:
           type: string
         disSymbol:
@@ -4181,6 +4250,102 @@ components:
                 type: integer
             type: object
           type: array
+    OptionContract:
+      properties:
+        activeLevel:
+          type: integer
+        askList:
+          items:
+            properties:
+              price:
+                type: string
+              volume:
+                type: string
+            type: object
+          type: array
+        belongTickerId:
+          format: int32
+          type: integer
+        bidList:
+          items:
+            properties:
+              price:
+                type: string
+              volumne:
+                type: string
+          type: array
+        change:
+          type: string
+        changeRatio:
+          type: string
+        close:
+          type: string
+        currencyId:
+          type: integer
+        delta:
+          type: string
+        derivativeStatus:
+          type: integer
+        direction:
+          enum:
+            - call
+            - put
+          type: string
+        exchangeId:
+          type: integer
+        expireDate:
+          type: string
+        gamma:
+          type: string
+        high:
+          type: string
+        impVol:
+          type: string
+        latestPriceVol:
+          type: string
+        low:
+          type: string
+        open:
+          type: string
+        openIntChange:
+          type: integer
+        openInterest:
+          type: integer
+        preClose:
+          type: string
+        quoteLotSize:
+          type: integer
+        quoteMultiplier:
+          type: integer
+        regionId:
+          type: integer
+        rho:
+          type: string
+        strikePrice:
+          type: string
+        symbol:
+          type: string
+        theta:
+          type: string
+        tickerId:
+          format: int32
+          type: integer
+        tradeStamp:
+          format: int32
+          type: integer
+        tradeTime:
+          type: string
+        unSymbol:
+          type: string
+        vega:
+          type: string
+        volume:
+          type: string
+        weekly:
+          description: '1 for true, 0 for false'
+          type: integer
+      title: OptionContract
+      type: object
     OptionOrder:
       properties:
         action:

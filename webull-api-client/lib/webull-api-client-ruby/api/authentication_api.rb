@@ -192,6 +192,7 @@ module WebullApiClient
     end
 
     # login
+    # Login v5 endpoint that is used by the web application and does not require MFA tokens
     # @param did [String] Device ID
     # @param [Hash] opts the optional parameters
     # @option opts [PostLoginParametersRequest] :post_login_parameters_request 
@@ -202,6 +203,7 @@ module WebullApiClient
     end
 
     # login
+    # Login v5 endpoint that is used by the web application and does not require MFA tokens
     # @param did [String] Device ID
     # @param [Hash] opts the optional parameters
     # @option opts [PostLoginParametersRequest] :post_login_parameters_request 
@@ -215,7 +217,7 @@ module WebullApiClient
         fail ArgumentError, "Missing the required parameter 'did' when calling AuthenticationApi.login"
       end
       # resource path
-      local_var_path = '/passport/login/v3/account'
+      local_var_path = '/passport/login/v5/account'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -253,6 +255,74 @@ module WebullApiClient
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AuthenticationApi#login\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # login_v3
+    # Login v3 endpoint that requires MFA tokens
+    # @param did [String] Device ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [PostLoginParametersRequest] :post_login_parameters_request 
+    # @return [PostLoginResponse]
+    def login_v3(did, opts = {})
+      data, _status_code, _headers = login_v3_with_http_info(did, opts)
+      data
+    end
+
+    # login_v3
+    # Login v3 endpoint that requires MFA tokens
+    # @param did [String] Device ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [PostLoginParametersRequest] :post_login_parameters_request 
+    # @return [Array<(PostLoginResponse, Integer, Hash)>] PostLoginResponse data, response status code and response headers
+    def login_v3_with_http_info(did, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AuthenticationApi.login_v3 ...'
+      end
+      # verify the required parameter 'did' is set
+      if @api_client.config.client_side_validation && did.nil?
+        fail ArgumentError, "Missing the required parameter 'did' when calling AuthenticationApi.login_v3"
+      end
+      # resource path
+      local_var_path = '/passport/login/v3/account'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'did'] = did
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'post_login_parameters_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PostLoginResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"AuthenticationApi.login_v3",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AuthenticationApi#login_v3\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

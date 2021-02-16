@@ -102,7 +102,7 @@ module WebullApiClient
     # @param did [String] Device ID
     # @param access_token [String] Access token
     # @param stock [Integer] Internal stock ticker ID
-    # @param count [Integer] 
+    # @param count [Integer] Number of contracts to return. -1 for all.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :include_weekly  (default to 1)
     # @option opts [OptionDirection] :direction 
@@ -118,7 +118,7 @@ module WebullApiClient
     # @param did [String] Device ID
     # @param access_token [String] Access token
     # @param stock [Integer] Internal stock ticker ID
-    # @param count [Integer] 
+    # @param count [Integer] Number of contracts to return. -1 for all.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :include_weekly 
     # @option opts [OptionDirection] :direction 

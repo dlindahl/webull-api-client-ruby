@@ -14,43 +14,19 @@ require 'date'
 require 'time'
 
 module WebullApiClient
-  class GetStockOptionsResponse
-    attr_accessor :change
+  class GetStockOptionsResponseData
+    attr_accessor :call
 
-    attr_accessor :change_ratio
+    attr_accessor :put
 
-    attr_accessor :close
-
-    attr_accessor :data
-
-    attr_accessor :dis_exchange_code
-
-    attr_accessor :dis_symbol
-
-    attr_accessor :expire_date
-
-    attr_accessor :expire_date_list
-
-    attr_accessor :name
-
-    attr_accessor :ticker_id
-
-    attr_accessor :un_symbol
+    attr_accessor :strike_price
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'change' => :'change',
-        :'change_ratio' => :'changeRatio',
-        :'close' => :'close',
-        :'data' => :'data',
-        :'dis_exchange_code' => :'disExchangeCode',
-        :'dis_symbol' => :'disSymbol',
-        :'expire_date' => :'expireDate',
-        :'expire_date_list' => :'expireDateList',
-        :'name' => :'name',
-        :'ticker_id' => :'tickerId',
-        :'un_symbol' => :'unSymbol'
+        :'call' => :'call',
+        :'put' => :'put',
+        :'strike_price' => :'strikePrice'
       }
     end
 
@@ -62,17 +38,9 @@ module WebullApiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'change' => :'String',
-        :'change_ratio' => :'String',
-        :'close' => :'String',
-        :'data' => :'Array<GetStockOptionsResponseData>',
-        :'dis_exchange_code' => :'String',
-        :'dis_symbol' => :'String',
-        :'expire_date' => :'String',
-        :'expire_date_list' => :'Array<GetStockOptionsResponseExpireDateList>',
-        :'name' => :'String',
-        :'ticker_id' => :'Integer',
-        :'un_symbol' => :'String'
+        :'call' => :'OptionContract',
+        :'put' => :'OptionContract',
+        :'strike_price' => :'String'
       }
     end
 
@@ -86,63 +54,27 @@ module WebullApiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::GetStockOptionsResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::GetStockOptionsResponseData` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::GetStockOptionsResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::GetStockOptionsResponseData`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'change')
-        self.change = attributes[:'change']
+      if attributes.key?(:'call')
+        self.call = attributes[:'call']
       end
 
-      if attributes.key?(:'change_ratio')
-        self.change_ratio = attributes[:'change_ratio']
+      if attributes.key?(:'put')
+        self.put = attributes[:'put']
       end
 
-      if attributes.key?(:'close')
-        self.close = attributes[:'close']
-      end
-
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
-      end
-
-      if attributes.key?(:'dis_exchange_code')
-        self.dis_exchange_code = attributes[:'dis_exchange_code']
-      end
-
-      if attributes.key?(:'dis_symbol')
-        self.dis_symbol = attributes[:'dis_symbol']
-      end
-
-      if attributes.key?(:'expire_date')
-        self.expire_date = attributes[:'expire_date']
-      end
-
-      if attributes.key?(:'expire_date_list')
-        if (value = attributes[:'expire_date_list']).is_a?(Array)
-          self.expire_date_list = value
-        end
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'ticker_id')
-        self.ticker_id = attributes[:'ticker_id']
-      end
-
-      if attributes.key?(:'un_symbol')
-        self.un_symbol = attributes[:'un_symbol']
+      if attributes.key?(:'strike_price')
+        self.strike_price = attributes[:'strike_price']
       end
     end
 
@@ -164,17 +96,9 @@ module WebullApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          change == o.change &&
-          change_ratio == o.change_ratio &&
-          close == o.close &&
-          data == o.data &&
-          dis_exchange_code == o.dis_exchange_code &&
-          dis_symbol == o.dis_symbol &&
-          expire_date == o.expire_date &&
-          expire_date_list == o.expire_date_list &&
-          name == o.name &&
-          ticker_id == o.ticker_id &&
-          un_symbol == o.un_symbol
+          call == o.call &&
+          put == o.put &&
+          strike_price == o.strike_price
     end
 
     # @see the `==` method
@@ -186,7 +110,7 @@ module WebullApiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [change, change_ratio, close, data, dis_exchange_code, dis_symbol, expire_date, expire_date_list, name, ticker_id, un_symbol].hash
+      [call, put, strike_price].hash
     end
 
     # Builds the object from hash
