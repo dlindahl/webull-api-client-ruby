@@ -1286,6 +1286,66 @@ paths:
       summary: getStockOptions
       tags:
         - options
+  '/quote/option/quotes/queryBatch':
+    get:
+      deprecated: false
+      operationId: getBatchStockOptions
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: derivativeIds
+          in: query
+          name: derivativeIds
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetBatchStockOptionsResponse"
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://quotes-gw.webullbroker.com/api'
+      summary: getBatchStockOptions
+      tags:
+        - options
   '/quote/tickerChartDatas/v5/{stock}':
     get:
       deprecated: false
@@ -3918,6 +3978,128 @@ components:
               example: 345.35
               type: string
           type: object
+    GetBatchStockOptionsResponse:
+      items:
+        properties:
+          open:
+            example: "60.65"
+            type: string
+        type: object
+      type: array
+    GetBatchStockOptionsResponseZomg:
+      items:
+        properties:
+          activeLevel:
+            example: 11
+            type: integer
+          askList:
+            items:
+              $ref: '#/components/schemas/OptionPriceList'
+              description: Order ask price list
+            type: array
+          belongTickerId:
+            format: int32
+            type: integer
+          bidList:
+            items:
+              $ref: '#/components/schemas/OptionPriceList'
+              description: Order bid price list
+            type: array
+          change:
+            example: "-17.65"
+            type: string
+          changeRatio:
+            example: "-0.3537"
+            type: string
+          close:
+            example: "32.25"
+            type: string
+          currencyId:
+            example: 247
+            type: integer
+          delta:
+            example: "0.7841"
+            type: string
+          derivativeStatus:
+            example: 1
+            type: integer
+          direction:
+            enum:
+              - call
+              - put
+            type: string
+          exchangeId:
+            example: 189
+            type: integer
+          expireDate:
+            example: "2021-04-01"
+            type: string
+          gamma:
+            example: "0.0051"
+            type: string
+          high:
+            example: "60.65"
+            type: string
+          latestPriceVol:
+            example: "1"
+            type: string
+          low:
+            example: "32.25"
+            type: string
+          open:
+            example: "60.65"
+            type: string
+          openInterest:
+            example: 6
+            type: integer
+          preClose:
+            example: "49.90"
+            type: string
+          quoteLotSize:
+            example: 100
+            type: integer
+          quoteMultiplier:
+            example: 100
+            type: integer
+          regionId:
+            example: 6
+            type: integer
+          rho:
+            example: "0.0163"
+            type: string
+          strikePrice:
+            example: "146"
+            type: string
+          symbol:
+            example: "GME210401C00146000"
+            type: string
+          theta:
+            example: "-1.4102"
+            type: string
+          tickerId:
+            example: 1020057804
+            format: int32
+            type: integer
+          tradeStamp:
+            example: 1616788763000
+            format: int32
+            type: integer
+          tradeTime:
+            example: "2021-03-26T18:04:06.853+0000"
+            type: string
+          unSymbol:
+            example: GME
+            type: string
+          vega:
+            example: "0.0671"
+            type: string
+          volume:
+            example: "3"
+            type: string
+          weekly:
+            example: 1
+            type: integer
+      type: array
     GetStockOptionsResponse:
       properties:
         change:
@@ -4250,29 +4432,45 @@ components:
                 type: integer
             type: object
           type: array
+    OptionExpirationList:
+      items:
+        properties:
+          date:
+            format: date
+            type: string
+          days:
+            format: int32
+            type: integer
+          unSymbol:
+            type: string
+          weekly:
+            format: int32
+            type: integer
+        type: object
+      type: array
+    OptionPriceList:
+      properties:
+        price:
+          type: string
+        volume:
+          type: string
+      type: object
     OptionContract:
       properties:
         activeLevel:
           type: integer
         askList:
           items:
-            properties:
-              price:
-                type: string
-              volume:
-                type: string
-            type: object
+            $ref: '#/components/schemas/OptionPriceList'
+            description: Order ask price list
           type: array
         belongTickerId:
           format: int32
           type: integer
         bidList:
           items:
-            properties:
-              price:
-                type: string
-              volumne:
-                type: string
+            $ref: '#/components/schemas/OptionPriceList'
+            description: Order bid price list
           type: array
         change:
           type: string

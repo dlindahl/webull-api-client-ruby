@@ -92,9 +92,9 @@ docs/Leg.md
 docs/LookupTickerResponse.md
 docs/LookupTickerResponseList.md
 docs/OptionContract.md
-docs/OptionContractAskList.md
 docs/OptionDirection.md
 docs/OptionOrder.md
+docs/OptionPriceList.md
 docs/OptionType.md
 docs/OptionsApi.md
 docs/Order.md
@@ -229,9 +229,9 @@ lib/webull-api-client-ruby/models/leg.rb
 lib/webull-api-client-ruby/models/lookup_ticker_response.rb
 lib/webull-api-client-ruby/models/lookup_ticker_response_list.rb
 lib/webull-api-client-ruby/models/option_contract.rb
-lib/webull-api-client-ruby/models/option_contract_ask_list.rb
 lib/webull-api-client-ruby/models/option_direction.rb
 lib/webull-api-client-ruby/models/option_order.rb
+lib/webull-api-client-ruby/models/option_price_list.rb
 lib/webull-api-client-ruby/models/option_type.rb
 lib/webull-api-client-ruby/models/order.rb
 lib/webull-api-client-ruby/models/order_action.rb

@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *WebullApiClient::AuthenticationApi* | [**logout**](docs/AuthenticationApi.md#logout) | **GET** /passport/login/logout | logout
 *WebullApiClient::AuthenticationApi* | [**refresh_token**](docs/AuthenticationApi.md#refresh_token) | **POST** /passport/refreshToken | refreshToken
 *WebullApiClient::DividendsApi* | [**get_dividends**](docs/DividendsApi.md#get_dividends) | **GET** /v2/account/{account_id}/dividends | getDividends
+*WebullApiClient::OptionsApi* | [**get_batch_stock_options**](docs/OptionsApi.md#get_batch_stock_options) | **GET** /quote/option/quotes/queryBatch | getBatchStockOptions
 *WebullApiClient::OptionsApi* | [**get_option_quotes**](docs/OptionsApi.md#get_option_quotes) | **GET** /quote/option/query/list | getOptionQuotes
 *WebullApiClient::OptionsApi* | [**get_stock_options**](docs/OptionsApi.md#get_stock_options) | **GET** /quote/option/{stock}/list | getStockOptions
 *WebullApiClient::OptionsApi* | [**place_option_order**](docs/OptionsApi.md#place_option_order) | **POST** /v2/option/placeOrder/{account_id} | placeOptionOrder
@@ -201,9 +202,9 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::LookupTickerResponse](docs/LookupTickerResponse.md)
  - [WebullApiClient::LookupTickerResponseList](docs/LookupTickerResponseList.md)
  - [WebullApiClient::OptionContract](docs/OptionContract.md)
- - [WebullApiClient::OptionContractAskList](docs/OptionContractAskList.md)
  - [WebullApiClient::OptionDirection](docs/OptionDirection.md)
  - [WebullApiClient::OptionOrder](docs/OptionOrder.md)
+ - [WebullApiClient::OptionPriceList](docs/OptionPriceList.md)
  - [WebullApiClient::OptionType](docs/OptionType.md)
  - [WebullApiClient::Order](docs/Order.md)
  - [WebullApiClient::OrderAction](docs/OrderAction.md)

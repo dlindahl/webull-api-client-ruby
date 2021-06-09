@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module WebullApiClient
-  class OptionContract
+  class GetBatchStockOptionsResponse
     attr_accessor :active_level
 
     attr_accessor :ask_list
@@ -45,15 +45,11 @@ module WebullApiClient
 
     attr_accessor :high
 
-    attr_accessor :imp_vol
-
     attr_accessor :latest_price_vol
 
     attr_accessor :low
 
     attr_accessor :open
-
-    attr_accessor :open_int_change
 
     attr_accessor :open_interest
 
@@ -85,7 +81,6 @@ module WebullApiClient
 
     attr_accessor :volume
 
-    # 1 for true, 0 for false
     attr_accessor :weekly
 
     class EnumAttributeValidator
@@ -128,11 +123,9 @@ module WebullApiClient
         :'expire_date' => :'expireDate',
         :'gamma' => :'gamma',
         :'high' => :'high',
-        :'imp_vol' => :'impVol',
         :'latest_price_vol' => :'latestPriceVol',
         :'low' => :'low',
         :'open' => :'open',
-        :'open_int_change' => :'openIntChange',
         :'open_interest' => :'openInterest',
         :'pre_close' => :'preClose',
         :'quote_lot_size' => :'quoteLotSize',
@@ -175,11 +168,9 @@ module WebullApiClient
         :'expire_date' => :'String',
         :'gamma' => :'String',
         :'high' => :'String',
-        :'imp_vol' => :'String',
         :'latest_price_vol' => :'String',
         :'low' => :'String',
         :'open' => :'String',
-        :'open_int_change' => :'Integer',
         :'open_interest' => :'Integer',
         :'pre_close' => :'String',
         :'quote_lot_size' => :'Integer',
@@ -209,13 +200,13 @@ module WebullApiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::OptionContract` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::GetBatchStockOptionsResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::OptionContract`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::GetBatchStockOptionsResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -284,10 +275,6 @@ module WebullApiClient
         self.high = attributes[:'high']
       end
 
-      if attributes.key?(:'imp_vol')
-        self.imp_vol = attributes[:'imp_vol']
-      end
-
       if attributes.key?(:'latest_price_vol')
         self.latest_price_vol = attributes[:'latest_price_vol']
       end
@@ -298,10 +285,6 @@ module WebullApiClient
 
       if attributes.key?(:'open')
         self.open = attributes[:'open']
-      end
-
-      if attributes.key?(:'open_int_change')
-        self.open_int_change = attributes[:'open_int_change']
       end
 
       if attributes.key?(:'open_interest')
@@ -414,11 +397,9 @@ module WebullApiClient
           expire_date == o.expire_date &&
           gamma == o.gamma &&
           high == o.high &&
-          imp_vol == o.imp_vol &&
           latest_price_vol == o.latest_price_vol &&
           low == o.low &&
           open == o.open &&
-          open_int_change == o.open_int_change &&
           open_interest == o.open_interest &&
           pre_close == o.pre_close &&
           quote_lot_size == o.quote_lot_size &&
@@ -446,7 +427,7 @@ module WebullApiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active_level, ask_list, belong_ticker_id, bid_list, change, change_ratio, close, currency_id, delta, derivative_status, direction, exchange_id, expire_date, gamma, high, imp_vol, latest_price_vol, low, open, open_int_change, open_interest, pre_close, quote_lot_size, quote_multiplier, region_id, rho, strike_price, symbol, theta, ticker_id, trade_stamp, trade_time, un_symbol, vega, volume, weekly].hash
+      [active_level, ask_list, belong_ticker_id, bid_list, change, change_ratio, close, currency_id, delta, derivative_status, direction, exchange_id, expire_date, gamma, high, latest_price_vol, low, open, open_interest, pre_close, quote_lot_size, quote_multiplier, region_id, rho, strike_price, symbol, theta, ticker_id, trade_stamp, trade_time, un_symbol, vega, volume, weekly].hash
     end
 
     # Builds the object from hash

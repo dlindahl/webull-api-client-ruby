@@ -330,6 +330,12 @@ module WebullApiClient
           description: "No description provided",
           }
         ],
+        "OptionsApi.get_batch_stock_options": [
+          {
+          url: "https://quotes-gw.webullbroker.com/api",
+          description: "No description provided",
+          }
+        ],
         "OptionsApi.get_option_quotes": [
           {
           url: "https://quotes-gw.webullbroker.com/api",
