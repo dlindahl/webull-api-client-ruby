@@ -6,6 +6,7 @@ All URIs are relative to *https://quoteapi.webull.com/api*
 | ------ | ------------ | ----------- |
 | [**get_active_gainers_losers**](StocksApi.md#get_active_gainers_losers) | **GET** /securities/market/v5/card/stockActivityPc.{direction}/list | getActiveGainersLosers |
 | [**get_fundamentals**](StocksApi.md#get_fundamentals) | **GET** /securities/financial/index/{stock} | getFundamentals |
+| [**get_latest_chart_data**](StocksApi.md#get_latest_chart_data) | **GET** /quote/charts/kdata/latest | getLatestChartData |
 | [**get_stock_analysis**](StocksApi.md#get_stock_analysis) | **GET** /securities/ticker/v5/analysis/{stock} | getStockAnalysis |
 | [**get_stock_id**](StocksApi.md#get_stock_id) | **GET** /search/tickers5 | getStockID |
 | [**get_stock_news**](StocksApi.md#get_stock_news) | **GET** /information/news/v5/tickerNews/{stock} | getStockNews |
@@ -142,6 +143,78 @@ end
 ### Return type
 
 [**Array&lt;GetFundamentalsResponse&gt;**](GetFundamentalsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_latest_chart_data
+
+> Array&lt;Object&gt; get_latest_chart_data(did, access_token, ticker_ids, timestamp, extend_trading, type)
+
+getLatestChartData
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::StocksApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+ticker_ids = 56 # Integer | The Ticker IDs to quote
+timestamp = 8.14 # Float | The selected day of chart date to request
+extend_trading = 56 # Integer | Whether to include pre-market and afterhours bars. '1' is used for pre-market and after-hours bars.
+type = 'm1' # String | The precision of the chart data
+
+begin
+  # getLatestChartData
+  result = api_instance.get_latest_chart_data(did, access_token, ticker_ids, timestamp, extend_trading, type)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling StocksApi->get_latest_chart_data: #{e}"
+end
+```
+
+#### Using the get_latest_chart_data_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Array&lt;Object&gt;, Integer, Hash)> get_latest_chart_data_with_http_info(did, access_token, ticker_ids, timestamp, extend_trading, type)
+
+```ruby
+begin
+  # getLatestChartData
+  data, status_code, headers = api_instance.get_latest_chart_data_with_http_info(did, access_token, ticker_ids, timestamp, extend_trading, type)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Array&lt;Object&gt;
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling StocksApi->get_latest_chart_data_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **ticker_ids** | **Integer** | The Ticker IDs to quote | [default to 913243251] |
+| **timestamp** | **Float** | The selected day of chart date to request |  |
+| **extend_trading** | **Integer** | Whether to include pre-market and afterhours bars. &#39;1&#39; is used for pre-market and after-hours bars. | [default to 1] |
+| **type** | **String** | The precision of the chart data | [default to &#39;m1&#39;] |
+
+### Return type
+
+**Array&lt;Object&gt;**
 
 ### Authorization
 

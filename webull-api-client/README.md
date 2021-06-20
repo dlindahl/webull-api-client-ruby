@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
 *WebullApiClient::QuoteApi* | [**get_stock_quote**](docs/QuoteApi.md#get_stock_quote) | **GET** /quote/tickerRealTimes/v5/{stock} | getStockQuote
 *WebullApiClient::StocksApi* | [**get_active_gainers_losers**](docs/StocksApi.md#get_active_gainers_losers) | **GET** /securities/market/v5/card/stockActivityPc.{direction}/list | getActiveGainersLosers
 *WebullApiClient::StocksApi* | [**get_fundamentals**](docs/StocksApi.md#get_fundamentals) | **GET** /securities/financial/index/{stock} | getFundamentals
+*WebullApiClient::StocksApi* | [**get_latest_chart_data**](docs/StocksApi.md#get_latest_chart_data) | **GET** /quote/charts/kdata/latest | getLatestChartData
 *WebullApiClient::StocksApi* | [**get_stock_analysis**](docs/StocksApi.md#get_stock_analysis) | **GET** /securities/ticker/v5/analysis/{stock} | getStockAnalysis
 *WebullApiClient::StocksApi* | [**get_stock_id**](docs/StocksApi.md#get_stock_id) | **GET** /search/tickers5 | getStockID
 *WebullApiClient::StocksApi* | [**get_stock_news**](docs/StocksApi.md#get_stock_news) | **GET** /information/news/v5/tickerNews/{stock} | getStockNews

@@ -456,6 +456,12 @@ module WebullApiClient
           description: "No description provided",
           }
         ],
+        "StocksApi.get_latest_chart_data": [
+          {
+          url: "https://quotes-gw.webullbroker.com/api",
+          description: "No description provided",
+          }
+        ],
         "StocksApi.get_stock_analysis": [
           {
           url: "https://securitiesapi.webullbroker.com/api",
