@@ -3981,14 +3981,6 @@ components:
     GetBatchStockOptionsResponse:
       items:
         properties:
-          open:
-            example: "60.65"
-            type: string
-        type: object
-      type: array
-    GetBatchStockOptionsResponseZomg:
-      items:
-        properties:
           activeLevel:
             example: 11
             type: integer
