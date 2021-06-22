@@ -232,7 +232,7 @@ No authorization required
 
 ## get_orders
 
-> <Array<GetOrdersResponse>> get_orders(did, access_token, sec_account_id, opts)
+> Array&lt;Object&gt; get_orders(did, access_token, sec_account_id, opts)
 
 getOrders
 
@@ -255,7 +255,8 @@ opts = {
   date_type: 'date_type_example', # String | Order type
   page_size: 56, # Integer | Page size
   last_create_time: 'last_create_time_example', # String | Last create time
-  status: WebullApiClient::OrderStatus::QUEUED # OrderStatus | Status of order
+  last_create_time0: 'last_create_time0_example', # String | Last create time
+  status: WebullApiClient::OrderStatus::ALL # OrderStatus | Status of order
 }
 
 begin
@@ -271,7 +272,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<GetOrdersResponse>>, Integer, Hash)> get_orders_with_http_info(did, access_token, sec_account_id, opts)
+> <Array(Array&lt;Object&gt;, Integer, Hash)> get_orders_with_http_info(did, access_token, sec_account_id, opts)
 
 ```ruby
 begin
@@ -279,7 +280,7 @@ begin
   data, status_code, headers = api_instance.get_orders_with_http_info(did, access_token, sec_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<GetOrdersResponse>>
+  p data # => Array&lt;Object&gt;
 rescue WebullApiClient::ApiError => e
   puts "Error when calling OrderApi->get_orders_with_http_info: #{e}"
 end
@@ -298,11 +299,12 @@ end
 | **date_type** | **String** | Order type | [optional][default to &#39;ORDER&#39;] |
 | **page_size** | **Integer** | Page size | [optional][default to 256] |
 | **last_create_time** | **String** | Last create time | [optional] |
+| **last_create_time0** | **String** | Last create time | [optional] |
 | **status** | [**OrderStatus**](.md) | Status of order | [optional] |
 
 ### Return type
 
-[**Array&lt;GetOrdersResponse&gt;**](GetOrdersResponse.md)
+**Array&lt;Object&gt;**
 
 ### Authorization
 

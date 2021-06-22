@@ -181,7 +181,7 @@ module WebullApiClient
     # @param count [Integer] Number of contracts to return. -1 for all.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :include_weekly  (default to 1)
-    # @option opts [OptionDirection] :direction 
+    # @option opts [OptionDirection] :direction
     # @option opts [String] :expire_date  (default to '12/16/2022')
     # @option opts [Integer] :query_all  (default to 0)
     # @return [GetStockOptionsResponse]
@@ -196,10 +196,10 @@ module WebullApiClient
     # @param stock [Integer] Internal stock ticker ID
     # @param count [Integer] Number of contracts to return. -1 for all.
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :include_weekly 
-    # @option opts [OptionDirection] :direction 
-    # @option opts [String] :expire_date 
-    # @option opts [Integer] :query_all 
+    # @option opts [Integer] :include_weekly
+    # @option opts [OptionDirection] :direction
+    # @option opts [String] :expire_date
+    # @option opts [Integer] :query_all
     # @return [Array<(GetStockOptionsResponse, Integer, Hash)>] GetStockOptionsResponse data, response status code and response headers
     def get_stock_options_with_http_info(did, access_token, stock, count, opts = {})
       if @api_client.config.debugging
@@ -276,7 +276,7 @@ module WebullApiClient
     # @param t_time [String] Time
     # @param account_id [String] account_id
     # @param [Hash] opts the optional parameters
-    # @option opts [PostOptionOrderRequest] :post_option_order_request 
+    # @option opts [PostOptionOrderRequest] :post_option_order_request
     # @return [Object]
     def place_option_order(did, access_token, t_token, t_time, account_id, opts = {})
       data, _status_code, _headers = place_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
@@ -291,7 +291,7 @@ module WebullApiClient
     # @param t_time [String] Time
     # @param account_id [String] account_id
     # @param [Hash] opts the optional parameters
-    # @option opts [PostOptionOrderRequest] :post_option_order_request 
+    # @option opts [PostOptionOrderRequest] :post_option_order_request
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def place_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts = {})
       if @api_client.config.debugging
@@ -370,7 +370,7 @@ module WebullApiClient
     # @param t_time [String] Time
     # @param account_id [String] account_id
     # @param [Hash] opts the optional parameters
-    # @option opts [ReplaceOptionOrderRequest] :replace_option_order_request 
+    # @option opts [ReplaceOptionOrderRequest] :replace_option_order_request
     # @return [Object]
     def replace_option_order(did, access_token, t_token, t_time, account_id, opts = {})
       data, _status_code, _headers = replace_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
@@ -384,7 +384,7 @@ module WebullApiClient
     # @param t_time [String] Time
     # @param account_id [String] account_id
     # @param [Hash] opts the optional parameters
-    # @option opts [ReplaceOptionOrderRequest] :replace_option_order_request 
+    # @option opts [ReplaceOptionOrderRequest] :replace_option_order_request
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def replace_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts = {})
       if @api_client.config.debugging

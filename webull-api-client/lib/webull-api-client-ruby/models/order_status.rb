@@ -15,6 +15,7 @@ require 'time'
 
 module WebullApiClient
   class OrderStatus
+    ALL = "All".freeze
     QUEUED = "Queued".freeze
     UNCONFIRMED = "Unconfirmed".freeze
     CONFIRMED = "Confirmed".freeze

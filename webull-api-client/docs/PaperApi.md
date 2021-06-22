@@ -103,7 +103,7 @@ date_type = 'date_type_example' # String |
 opts = {
   start_time: 'start_time_example', # String | 
   page_size: 8.14, # Float | 
-  status: WebullApiClient::OrderStatus::QUEUED # OrderStatus | 
+  status: WebullApiClient::OrderStatus::ALL # OrderStatus | 
 }
 
 begin

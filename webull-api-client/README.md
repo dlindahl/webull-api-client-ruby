@@ -177,7 +177,6 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::GetOrdersItemOrders](docs/GetOrdersItemOrders.md)
  - [WebullApiClient::GetOrdersItemTicker](docs/GetOrdersItemTicker.md)
  - [WebullApiClient::GetOrdersItemTickerPriceDefineList](docs/GetOrdersItemTickerPriceDefineList.md)
- - [WebullApiClient::GetOrdersResponse](docs/GetOrdersResponse.md)
  - [WebullApiClient::GetSecurityAccountsResponse](docs/GetSecurityAccountsResponse.md)
  - [WebullApiClient::GetSecurityAccountsResponseData](docs/GetSecurityAccountsResponseData.md)
  - [WebullApiClient::GetSecurityAccountsResponseTickerTypes](docs/GetSecurityAccountsResponseTickerTypes.md)

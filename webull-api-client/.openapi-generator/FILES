@@ -66,7 +66,6 @@ docs/GetOrdersItem.md
 docs/GetOrdersItemOrders.md
 docs/GetOrdersItemTicker.md
 docs/GetOrdersItemTickerPriceDefineList.md
-docs/GetOrdersResponse.md
 docs/GetSecurityAccountsResponse.md
 docs/GetSecurityAccountsResponseData.md
 docs/GetSecurityAccountsResponseTickerTypes.md
@@ -203,7 +202,6 @@ lib/webull-api-client-ruby/models/get_orders_item.rb
 lib/webull-api-client-ruby/models/get_orders_item_orders.rb
 lib/webull-api-client-ruby/models/get_orders_item_ticker.rb
 lib/webull-api-client-ruby/models/get_orders_item_ticker_price_define_list.rb
-lib/webull-api-client-ruby/models/get_orders_response.rb
 lib/webull-api-client-ruby/models/get_security_accounts_response.rb
 lib/webull-api-client-ruby/models/get_security_accounts_response_data.rb
 lib/webull-api-client-ruby/models/get_security_accounts_response_ticker_types.rb

@@ -306,8 +306,9 @@ module WebullApiClient
     # @option opts [String] :date_type Order type (default to 'ORDER')
     # @option opts [Integer] :page_size Page size (default to 256)
     # @option opts [String] :last_create_time Last create time
+    # @option opts [String] :last_create_time0 Last create time
     # @option opts [OrderStatus] :status Status of order
-    # @return [Array<GetOrdersResponse>]
+    # @return [Array<Object>]
     def get_orders(did, access_token, sec_account_id, opts = {})
       data, _status_code, _headers = get_orders_with_http_info(did, access_token, sec_account_id, opts)
       data
@@ -325,8 +326,9 @@ module WebullApiClient
     # @option opts [String] :date_type Order type
     # @option opts [Integer] :page_size Page size
     # @option opts [String] :last_create_time Last create time
+    # @option opts [String] :last_create_time0 Last create time
     # @option opts [OrderStatus] :status Status of order
-    # @return [Array<(Array<GetOrdersResponse>, Integer, Hash)>] Array<GetOrdersResponse> data, response status code and response headers
+    # @return [Array<(Array<Object>, Integer, Hash)>] Array<Object> data, response status code and response headers
     def get_orders_with_http_info(did, access_token, sec_account_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OrderApi.get_orders ...'
@@ -353,6 +355,7 @@ module WebullApiClient
       query_params[:'dateType'] = opts[:'date_type'] if !opts[:'date_type'].nil?
       query_params[:'pageSize'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'lastCreateTime'] = opts[:'last_create_time'] if !opts[:'last_create_time'].nil?
+      query_params[:'lastCreateTime0'] = opts[:'last_create_time0'] if !opts[:'last_create_time0'].nil?
       query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?
 
       # header parameters
@@ -371,7 +374,7 @@ module WebullApiClient
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Array<GetOrdersResponse>'
+      return_type = opts[:debug_return_type] || 'Array<Object>'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || []
