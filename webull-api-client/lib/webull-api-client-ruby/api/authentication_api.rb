@@ -121,8 +121,8 @@ module WebullApiClient
     # @param did [String] Device ID
     # @param access_token [String] Access token
     # @param [Hash] opts the optional parameters
-    # @option opts [PostLoginParametersRequest] :post_login_parameters_request 
-    # @return [Array<PostTradeTokenResponse>]
+    # @option opts [PostTradeTokenParametersRequest] :post_trade_token_parameters_request 
+    # @return [PostTradeTokenResponse]
     def get_trade_token(did, access_token, opts = {})
       data, _status_code, _headers = get_trade_token_with_http_info(did, access_token, opts)
       data
@@ -133,8 +133,8 @@ module WebullApiClient
     # @param did [String] Device ID
     # @param access_token [String] Access token
     # @param [Hash] opts the optional parameters
-    # @option opts [PostLoginParametersRequest] :post_login_parameters_request 
-    # @return [Array<(Array<PostTradeTokenResponse>, Integer, Hash)>] Array<PostTradeTokenResponse> data, response status code and response headers
+    # @option opts [PostTradeTokenParametersRequest] :post_trade_token_parameters_request 
+    # @return [Array<(PostTradeTokenResponse, Integer, Hash)>] PostTradeTokenResponse data, response status code and response headers
     def get_trade_token_with_http_info(did, access_token, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthenticationApi.get_trade_token ...'
@@ -146,6 +146,81 @@ module WebullApiClient
       # verify the required parameter 'access_token' is set
       if @api_client.config.client_side_validation && access_token.nil?
         fail ArgumentError, "Missing the required parameter 'access_token' when calling AuthenticationApi.get_trade_token"
+      end
+      # resource path
+      local_var_path = '/trading/v1/global/trade/login'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'did'] = did
+      header_params[:'access_token'] = access_token
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'post_trade_token_parameters_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PostTradeTokenResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"AuthenticationApi.get_trade_token",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AuthenticationApi#get_trade_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # getTradeToken
+    # Trading related authorize trade, must be done before trade action. Note: ensure 'pwd' is your trade PIN. Your password isn't used here.'
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param [Hash] opts the optional parameters
+    # @option opts [PostLoginParametersRequest] :post_login_parameters_request 
+    # @return [Array<PostTradeTokenResponse>]
+    def get_trade_token0(did, access_token, opts = {})
+      data, _status_code, _headers = get_trade_token0_with_http_info(did, access_token, opts)
+      data
+    end
+
+    # getTradeToken
+    # Trading related authorize trade, must be done before trade action. Note: ensure &#39;pwd&#39; is your trade PIN. Your password isn&#39;t used here.&#39;
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param [Hash] opts the optional parameters
+    # @option opts [PostLoginParametersRequest] :post_login_parameters_request 
+    # @return [Array<(Array<PostTradeTokenResponse>, Integer, Hash)>] Array<PostTradeTokenResponse> data, response status code and response headers
+    def get_trade_token0_with_http_info(did, access_token, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AuthenticationApi.get_trade_token0 ...'
+      end
+      # verify the required parameter 'did' is set
+      if @api_client.config.client_side_validation && did.nil?
+        fail ArgumentError, "Missing the required parameter 'did' when calling AuthenticationApi.get_trade_token0"
+      end
+      # verify the required parameter 'access_token' is set
+      if @api_client.config.client_side_validation && access_token.nil?
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling AuthenticationApi.get_trade_token0"
       end
       # resource path
       local_var_path = '/login'
@@ -175,7 +250,7 @@ module WebullApiClient
       auth_names = opts[:debug_auth_names] || []
 
       new_options = opts.merge(
-        :operation => :"AuthenticationApi.get_trade_token",
+        :operation => :"AuthenticationApi.get_trade_token0",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -186,7 +261,7 @@ module WebullApiClient
 
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AuthenticationApi#get_trade_token\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: AuthenticationApi#get_trade_token0\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

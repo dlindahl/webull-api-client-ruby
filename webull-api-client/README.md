@@ -82,12 +82,15 @@ Class | Method | HTTP request | Description
 *WebullApiClient::AccountsApi* | [**get_transfer_history**](docs/AccountsApi.md#get_transfer_history) | **POST** /asset/{account_id}/getWebullTransferList | getTransferHistory
 *WebullApiClient::AlertsApi* | [**get_alerts**](docs/AlertsApi.md#get_alerts) | **GET** /user/warning/v2/query/tickers | getAlerts
 *WebullApiClient::AuthenticationApi* | [**get_multi_factor_auth**](docs/AuthenticationApi.md#get_multi_factor_auth) | **POST** /passport/verificationCode/sendCode | getMultiFactorAuth
-*WebullApiClient::AuthenticationApi* | [**get_trade_token**](docs/AuthenticationApi.md#get_trade_token) | **POST** /login | getTradeToken
+*WebullApiClient::AuthenticationApi* | [**get_trade_token**](docs/AuthenticationApi.md#get_trade_token) | **POST** /trading/v1/global/trade/login | getTradeToken
+*WebullApiClient::AuthenticationApi* | [**get_trade_token0**](docs/AuthenticationApi.md#get_trade_token0) | **POST** /login | getTradeToken
 *WebullApiClient::AuthenticationApi* | [**login**](docs/AuthenticationApi.md#login) | **POST** /passport/login/v5/account | login
 *WebullApiClient::AuthenticationApi* | [**login_v3**](docs/AuthenticationApi.md#login_v3) | **POST** /passport/login/v3/account | login_v3
 *WebullApiClient::AuthenticationApi* | [**logout**](docs/AuthenticationApi.md#logout) | **GET** /passport/login/logout | logout
 *WebullApiClient::AuthenticationApi* | [**refresh_token**](docs/AuthenticationApi.md#refresh_token) | **POST** /passport/refreshToken | refreshToken
 *WebullApiClient::DividendsApi* | [**get_dividends**](docs/DividendsApi.md#get_dividends) | **GET** /v2/account/{account_id}/dividends | getDividends
+*WebullApiClient::OptionsApi* | [**cancel_option_order**](docs/OptionsApi.md#cancel_option_order) | **GET** /v2/option/cancelOrder | cancelOptionOrder
+*WebullApiClient::OptionsApi* | [**check_option_order**](docs/OptionsApi.md#check_option_order) | **POST** /v2/option/checkOrder/{account_id} | checkOptionOrder
 *WebullApiClient::OptionsApi* | [**get_batch_stock_options**](docs/OptionsApi.md#get_batch_stock_options) | **GET** /quote/option/quotes/queryBatch | getBatchStockOptions
 *WebullApiClient::OptionsApi* | [**get_option_quotes**](docs/OptionsApi.md#get_option_quotes) | **GET** /quote/option/query/list | getOptionQuotes
 *WebullApiClient::OptionsApi* | [**get_stock_options**](docs/OptionsApi.md#get_stock_options) | **GET** /quote/option/{stock}/list | getStockOptions
@@ -106,6 +109,7 @@ Class | Method | HTTP request | Description
 *WebullApiClient::PaperApi* | [**get_paper_trading_account_id**](docs/PaperApi.md#get_paper_trading_account_id) | **GET** /myaccounts/true | getPaperTradingAccountID
 *WebullApiClient::PaperApi* | [**modify_paper_trade_order**](docs/PaperApi.md#modify_paper_trade_order) | **POST** /paper/1/acc/{paper_account_id}/orderop/modify/{order_id} | modifyPaperTradeOrder
 *WebullApiClient::PaperApi* | [**place_paper_trade_order**](docs/PaperApi.md#place_paper_trade_order) | **POST** /paper/1/acc/{paper_account_id}/orderop/place/{stock} | placePaperTradeOrder
+*WebullApiClient::QuoteApi* | [**get_batch_stock_quote**](docs/QuoteApi.md#get_batch_stock_quote) | **GET** /bgw/quote/realtime | getBatchStockQuote
 *WebullApiClient::QuoteApi* | [**get_stock_quote**](docs/QuoteApi.md#get_stock_quote) | **GET** /quote/tickerRealTimes/v5/{stock} | getStockQuote
 *WebullApiClient::StocksApi* | [**get_active_gainers_losers**](docs/StocksApi.md#get_active_gainers_losers) | **GET** /securities/market/v5/card/stockActivityPc.{direction}/list | getActiveGainersLosers
 *WebullApiClient::StocksApi* | [**get_fundamentals**](docs/StocksApi.md#get_fundamentals) | **GET** /securities/financial/index/{stock} | getFundamentals
@@ -218,6 +222,7 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::PostLoginResponse](docs/PostLoginResponse.md)
  - [WebullApiClient::PostLoginResponseExtInfo](docs/PostLoginResponseExtInfo.md)
  - [WebullApiClient::PostLoginResponseSettings](docs/PostLoginResponseSettings.md)
+ - [WebullApiClient::PostOptionCheckOrderRequest](docs/PostOptionCheckOrderRequest.md)
  - [WebullApiClient::PostOptionOrderRequest](docs/PostOptionOrderRequest.md)
  - [WebullApiClient::PostOrderResponse](docs/PostOrderResponse.md)
  - [WebullApiClient::PostOtocoOrderRequest](docs/PostOtocoOrderRequest.md)
@@ -225,8 +230,8 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::PostPaperOrderResponse](docs/PostPaperOrderResponse.md)
  - [WebullApiClient::PostRefreshTokenResponse](docs/PostRefreshTokenResponse.md)
  - [WebullApiClient::PostStockOrderRequest](docs/PostStockOrderRequest.md)
+ - [WebullApiClient::PostTradeTokenParametersRequest](docs/PostTradeTokenParametersRequest.md)
  - [WebullApiClient::PostTradeTokenResponse](docs/PostTradeTokenResponse.md)
- - [WebullApiClient::PostTradeTokenResponseData](docs/PostTradeTokenResponseData.md)
  - [WebullApiClient::ReplaceOptionOrderRequest](docs/ReplaceOptionOrderRequest.md)
  - [WebullApiClient::SmartRule](docs/SmartRule.md)
  - [WebullApiClient::TimeInForce](docs/TimeInForce.md)

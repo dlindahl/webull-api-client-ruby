@@ -47,8 +47,6 @@ module WebullApiClient
 
     attr_accessor :inception_date
 
-    attr_accessor :latest_dividend_date
-
     attr_accessor :limit_down
 
     attr_accessor :limit_up
@@ -122,7 +120,6 @@ module WebullApiClient
         :'fifty_two_wk_low' => :'fiftyTwoWkLow',
         :'high' => :'high',
         :'inception_date' => :'inceptionDate',
-        :'latest_dividend_date' => :'latestDividendDate',
         :'limit_down' => :'limitDown',
         :'limit_up' => :'limitUp',
         :'lot_size' => :'lotSize',
@@ -177,7 +174,6 @@ module WebullApiClient
         :'fifty_two_wk_low' => :'String',
         :'high' => :'String',
         :'inception_date' => :'Date',
-        :'latest_dividend_date' => :'Date',
         :'limit_down' => :'String',
         :'limit_up' => :'String',
         :'lot_size' => :'String',
@@ -291,10 +287,6 @@ module WebullApiClient
 
       if attributes.key?(:'inception_date')
         self.inception_date = attributes[:'inception_date']
-      end
-
-      if attributes.key?(:'latest_dividend_date')
-        self.latest_dividend_date = attributes[:'latest_dividend_date']
       end
 
       if attributes.key?(:'limit_down')
@@ -440,7 +432,6 @@ module WebullApiClient
           fifty_two_wk_low == o.fifty_two_wk_low &&
           high == o.high &&
           inception_date == o.inception_date &&
-          latest_dividend_date == o.latest_dividend_date &&
           limit_down == o.limit_down &&
           limit_up == o.limit_up &&
           lot_size == o.lot_size &&
@@ -479,7 +470,7 @@ module WebullApiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [avg_vol10_d, avg_vol3_m, beta3_y, bps, change, change_ratio, close, currency_code, derivative_support, dividend, eps, eps_ttm, fifty_two_wk_high, fifty_two_wk_low, high, inception_date, latest_dividend_date, limit_down, limit_up, lot_size, low, net_asset, net_expense_ratio, net_value, ntv_size, open, p_ch_ratio, p_change, p_price, pe, pe_ttm, pre_close, rating, return_this_year, status, ticker_id, time_zone, total_asset, trade_time, tz_name, vibrate_ratio, volume, _yield, yield1_y].hash
+      [avg_vol10_d, avg_vol3_m, beta3_y, bps, change, change_ratio, close, currency_code, derivative_support, dividend, eps, eps_ttm, fifty_two_wk_high, fifty_two_wk_low, high, inception_date, limit_down, limit_up, lot_size, low, net_asset, net_expense_ratio, net_value, ntv_size, open, p_ch_ratio, p_change, p_price, pe, pe_ttm, pre_close, rating, return_this_year, status, ticker_id, time_zone, total_asset, trade_time, tz_name, vibrate_ratio, volume, _yield, yield1_y].hash
     end
 
     # Builds the object from hash

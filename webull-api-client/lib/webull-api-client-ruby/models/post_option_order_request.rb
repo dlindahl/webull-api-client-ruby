@@ -17,7 +17,11 @@ module WebullApiClient
   class PostOptionOrderRequest
     attr_accessor :aux_price
 
+    attr_accessor :combo_id
+
     attr_accessor :lmt_price
+
+    attr_accessor :order_id
 
     attr_accessor :order_type
 
@@ -25,16 +29,21 @@ module WebullApiClient
 
     attr_accessor :serial_id
 
+    attr_accessor :stp_price
+
     attr_accessor :time_in_force
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'aux_price' => :'auxPrice',
+        :'combo_id' => :'comboId',
         :'lmt_price' => :'lmtPrice',
+        :'order_id' => :'orderId',
         :'order_type' => :'orderType',
         :'orders' => :'orders',
         :'serial_id' => :'serialId',
+        :'stp_price' => :'stpPrice',
         :'time_in_force' => :'timeInForce'
       }
     end
@@ -48,10 +57,13 @@ module WebullApiClient
     def self.openapi_types
       {
         :'aux_price' => :'Float',
+        :'combo_id' => :'String',
         :'lmt_price' => :'Float',
+        :'order_id' => :'Integer',
         :'order_type' => :'OrderType',
         :'orders' => :'Array<OptionOrder>',
         :'serial_id' => :'String',
+        :'stp_price' => :'Float',
         :'time_in_force' => :'TimeInForce'
       }
     end
@@ -81,8 +93,16 @@ module WebullApiClient
         self.aux_price = attributes[:'aux_price']
       end
 
+      if attributes.key?(:'combo_id')
+        self.combo_id = attributes[:'combo_id']
+      end
+
       if attributes.key?(:'lmt_price')
         self.lmt_price = attributes[:'lmt_price']
+      end
+
+      if attributes.key?(:'order_id')
+        self.order_id = attributes[:'order_id']
       end
 
       if attributes.key?(:'order_type')
@@ -97,6 +117,10 @@ module WebullApiClient
 
       if attributes.key?(:'serial_id')
         self.serial_id = attributes[:'serial_id']
+      end
+
+      if attributes.key?(:'stp_price')
+        self.stp_price = attributes[:'stp_price']
       end
 
       if attributes.key?(:'time_in_force')
@@ -123,10 +147,13 @@ module WebullApiClient
       return true if self.equal?(o)
       self.class == o.class &&
           aux_price == o.aux_price &&
+          combo_id == o.combo_id &&
           lmt_price == o.lmt_price &&
+          order_id == o.order_id &&
           order_type == o.order_type &&
           orders == o.orders &&
           serial_id == o.serial_id &&
+          stp_price == o.stp_price &&
           time_in_force == o.time_in_force
     end
 
@@ -139,7 +166,7 @@ module WebullApiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [aux_price, lmt_price, order_type, orders, serial_id, time_in_force].hash
+      [aux_price, combo_id, lmt_price, order_id, order_type, orders, serial_id, stp_price, time_in_force].hash
     end
 
     # Builds the object from hash

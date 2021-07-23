@@ -110,6 +110,7 @@ docs/PostLoginParametersRequestExtInfo.md
 docs/PostLoginResponse.md
 docs/PostLoginResponseExtInfo.md
 docs/PostLoginResponseSettings.md
+docs/PostOptionCheckOrderRequest.md
 docs/PostOptionOrderRequest.md
 docs/PostOrderResponse.md
 docs/PostOtocoOrderRequest.md
@@ -117,8 +118,8 @@ docs/PostOtocoStockOrderRequest.md
 docs/PostPaperOrderResponse.md
 docs/PostRefreshTokenResponse.md
 docs/PostStockOrderRequest.md
+docs/PostTradeTokenParametersRequest.md
 docs/PostTradeTokenResponse.md
-docs/PostTradeTokenResponseData.md
 docs/QuoteApi.md
 docs/ReplaceOptionOrderRequest.md
 docs/SmartRule.md
@@ -243,6 +244,7 @@ lib/webull-api-client-ruby/models/post_login_parameters_request_ext_info.rb
 lib/webull-api-client-ruby/models/post_login_response.rb
 lib/webull-api-client-ruby/models/post_login_response_ext_info.rb
 lib/webull-api-client-ruby/models/post_login_response_settings.rb
+lib/webull-api-client-ruby/models/post_option_check_order_request.rb
 lib/webull-api-client-ruby/models/post_option_order_request.rb
 lib/webull-api-client-ruby/models/post_order_response.rb
 lib/webull-api-client-ruby/models/post_otoco_order_request.rb
@@ -250,8 +252,8 @@ lib/webull-api-client-ruby/models/post_otoco_stock_order_request.rb
 lib/webull-api-client-ruby/models/post_paper_order_response.rb
 lib/webull-api-client-ruby/models/post_refresh_token_response.rb
 lib/webull-api-client-ruby/models/post_stock_order_request.rb
+lib/webull-api-client-ruby/models/post_trade_token_parameters_request.rb
 lib/webull-api-client-ruby/models/post_trade_token_response.rb
-lib/webull-api-client-ruby/models/post_trade_token_response_data.rb
 lib/webull-api-client-ruby/models/replace_option_order_request.rb
 lib/webull-api-client-ruby/models/smart_rule.rb
 lib/webull-api-client-ruby/models/time_in_force.rb

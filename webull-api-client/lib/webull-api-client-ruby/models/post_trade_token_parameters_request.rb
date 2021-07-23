@@ -14,16 +14,14 @@ require 'date'
 require 'time'
 
 module WebullApiClient
-  class PostTradeTokenResponse
-    attr_accessor :trade_token
-
-    attr_accessor :trade_token_expire_in
+  class PostTradeTokenParametersRequest
+    # pwd = md5(passwordHash + password)
+    attr_accessor :pwd
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'trade_token' => :'tradeToken',
-        :'trade_token_expire_in' => :'tradeTokenExpireIn'
+        :'pwd' => :'pwd'
       }
     end
 
@@ -35,8 +33,7 @@ module WebullApiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'trade_token' => :'String',
-        :'trade_token_expire_in' => :'Integer'
+        :'pwd' => :'String'
       }
     end
 
@@ -50,23 +47,19 @@ module WebullApiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::PostTradeTokenResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::PostTradeTokenParametersRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::PostTradeTokenResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::PostTradeTokenParametersRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'trade_token')
-        self.trade_token = attributes[:'trade_token']
-      end
-
-      if attributes.key?(:'trade_token_expire_in')
-        self.trade_token_expire_in = attributes[:'trade_token_expire_in']
+      if attributes.key?(:'pwd')
+        self.pwd = attributes[:'pwd']
       end
     end
 
@@ -88,8 +81,7 @@ module WebullApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          trade_token == o.trade_token &&
-          trade_token_expire_in == o.trade_token_expire_in
+          pwd == o.pwd
     end
 
     # @see the `==` method
@@ -101,7 +93,7 @@ module WebullApiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [trade_token, trade_token_expire_in].hash
+      [pwd].hash
     end
 
     # Builds the object from hash

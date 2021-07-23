@@ -230,7 +230,7 @@ paths:
         - stocks
   "/login":
     post:
-      deprecated: false
+      deprecated: true
       description: "Trading related authorize trade, must be done before trade action. Note: ensure 'pwd' is your trade PIN. Your password isn't used here.'"
       parameters:
         - in: header
@@ -251,7 +251,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PostLoginParametersRequest'
-      operationId: getTradeToken
+      operationId: getTradeToken0
       responses:
         '200':
           content:
@@ -1127,6 +1127,60 @@ paths:
       summary: getMultiFactorAuth
       tags:
         - authentication
+  "/trading/v1/global/trade/login":
+    post:
+      deprecated: false
+      description: "Trading related authorize trade, must be done before trade action. Note: ensure 'pwd' is your trade PIN. Your password isn't used here.'"
+      operationId: getTradeToken
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostTradeTokenParametersRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostTradeTokenResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://trade.webullbroker.com/api'
+      summary: getTradeToken
+      tags:
+        - authentication
   "/quote/charts/kdata/latest":
     get:
       deprecated: false
@@ -1586,6 +1640,80 @@ paths:
       servers:
         - url: 'https://quoteapi.webull.com/api'
       summary: getStockQuote
+      tags:
+        - quote
+  '/bgw/quote/realtime':
+    get:
+      deprecated: false
+      description: "Get batch stock quote"
+      operationId: getBatchStockQuote
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: ids
+          description: Internal stock ticker IDs
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: includeSecu
+          required: true
+          schema:
+            default: 1
+            type: integer
+        - in: query
+          name: delay
+          required: true
+          schema:
+            default: 0
+            type: integer
+        - in: query
+          name: more
+          required: true
+          schema:
+            default: 1
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetBatchStockQuoteResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://quotes-gw.webullfintech.com/api'
+      summary: getBatchStockQuote
       tags:
         - quote
   "/search/tickers5":
@@ -2621,6 +2749,169 @@ paths:
       servers:
         - url: 'https://tradeapi.webulltrade.com/api/trade'
       summary: placeOptionOrder
+      tags:
+        - options
+  '/v2/option/cancelOrder':
+    get:
+      deprecated: false
+      description: Cancel an option order
+      operationId: cancelOptionOrder
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: Account ID
+          in: query
+          name: secAccountId
+          required: true
+          schema:
+            type: string
+        - description: UUID
+          in: query
+          name: serialId
+          required: true
+          schema:
+            type: string
+        - description: Order combo ID
+          in: query
+          name: comboId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://ustrade.webullbroker.com/api/trade'
+      summary: cancelOptionOrder
+      tags:
+        - options
+  '/v2/option/checkOrder/{account_id}':
+    post:
+      deprecated: false
+      description: Check an option order
+      operationId: checkOptionOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOptionCheckOrderRequest'
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: account_id
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://ustrade.webullbroker.com/api/trade'
+      summary: checkOptionOrder
       tags:
         - options
   '/v2/option/replaceOrder/{account_id}':
@@ -4413,6 +4704,105 @@ components:
           type: integer
         unSymbol:
           type: string
+    GetBatchStockQuoteResponse:
+      items:
+        properties:
+          avgVol10D:
+            type: string
+          avgVol3M:
+            type: string
+          beta3Y:
+            type: string
+          bps:
+            type: string
+          change:
+            type: string
+          changeRatio:
+            type: string
+          close:
+            type: string
+          currencyCode:
+            type: string
+          derivativeSupport:
+            format: int32
+            type: integer
+          dividend:
+            type: string
+          eps:
+            type: string
+          epsTtm:
+            type: string
+          fiftyTwoWkHigh:
+            type: string
+          fiftyTwoWkLow:
+            type: string
+          high:
+            type: string
+          inceptionDate:
+            format: date
+            type: string
+          # NOTE: This can be blank which fails to parse as a Date
+          # latestDividendDate:
+          #   format: date
+          #   type: string
+          limitDown:
+            type: string
+          limitUp:
+            type: string
+          lotSize:
+            type: string
+          low:
+            type: string
+          netAsset:
+            type: string
+          netExpenseRatio:
+            type: string
+          netValue:
+            type: string
+          ntvSize:
+            format: int32
+            type: integer
+          open:
+            type: string
+          pChRatio:
+            type: string
+          pChange:
+            type: string
+          pPrice:
+            type: string
+          pe:
+            type: string
+          peTtm:
+            type: string
+          preClose:
+            type: string
+          rating:
+            format: int32
+            type: integer
+          returnThisYear:
+            type: string
+          status:
+            type: string
+          tickerId:
+            format: int32
+            type: integer
+          timeZone:
+            type: string
+          totalAsset:
+            type: string
+          tradeTime:
+            type: string
+          tzName:
+            type: string
+          vibrateRatio:
+            type: string
+          volume:
+            type: string
+          yield:
+            type: string
+          yield1Y:
+            type: string
+      type: array
     GetStockQuoteResponse:
       properties:
         avgVol10D:
@@ -4449,9 +4839,10 @@ components:
         inceptionDate:
           format: date
           type: string
-        latestDividendDate:
-          format: date
-          type: string
+        # NOTE: This can be blank which fails to parse as a Date
+        # latestDividendDate:
+        #   format: date
+        #   type: string
         limitDown:
           type: string
         limitUp:
@@ -5027,6 +5418,11 @@ components:
           default: 1
           format: int32
           type: integer
+    PostTradeTokenParametersRequest:
+      properties:
+        pwd:
+          description: pwd = md5(passwordHash + password)
+          type: string
     PostLoginResponse:
       properties:
         accessToken:
@@ -5152,8 +5548,13 @@ components:
       properties:
         auxPrice:
           type: number
+        comboId:
+          type: string
         lmtPrice:
           type: number
+        orderId:
+          format: int32
+          type: integer
         orderType:
           $ref: '#/components/schemas/OrderType'
         orders:
@@ -5162,8 +5563,23 @@ components:
           type: array
         serialId:
           type: string
+        stpPrice:
+          type: number
         timeInForce:
           $ref: '#/components/schemas/TimeInForce'
+      type: object
+    PostOptionCheckOrderRequest:
+      properties:
+        checkResultList:
+          items:
+            properties:
+              code:
+                type: string
+              msg:
+                type: string
+          type: array
+        forward:
+          type: boolean
       type: object
     PostOtocoOrderRequest:
       properties:
@@ -5251,16 +5667,12 @@ components:
           type: integer
     PostTradeTokenResponse:
       properties:
-        data:
-          properties:
-            tradeToken:
-              type: string
-            tradeTokenExpireIn:
-              format: int32
-              type: integer
-          type: object
-        success:
-          type: boolean
+        tradeToken:
+          type: string
+        tradeTokenExpireIn:
+          format: int32
+          type: integer
+      type: object
     ReplaceOptionOrderRequest:
       properties:
         auxPrice:

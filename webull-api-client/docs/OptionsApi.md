@@ -4,11 +4,165 @@ All URIs are relative to *https://quoteapi.webull.com/api*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**cancel_option_order**](OptionsApi.md#cancel_option_order) | **GET** /v2/option/cancelOrder | cancelOptionOrder |
+| [**check_option_order**](OptionsApi.md#check_option_order) | **POST** /v2/option/checkOrder/{account_id} | checkOptionOrder |
 | [**get_batch_stock_options**](OptionsApi.md#get_batch_stock_options) | **GET** /quote/option/quotes/queryBatch | getBatchStockOptions |
 | [**get_option_quotes**](OptionsApi.md#get_option_quotes) | **GET** /quote/option/query/list | getOptionQuotes |
 | [**get_stock_options**](OptionsApi.md#get_stock_options) | **GET** /quote/option/{stock}/list | getStockOptions |
 | [**place_option_order**](OptionsApi.md#place_option_order) | **POST** /v2/option/placeOrder/{account_id} | placeOptionOrder |
 | [**replace_option_order**](OptionsApi.md#replace_option_order) | **POST** /v2/option/replaceOrder/{account_id} | replaceOptionOrder |
+
+
+## cancel_option_order
+
+> Object cancel_option_order(did, access_token, t_token, t_time, sec_account_id, serial_id, combo_id)
+
+cancelOptionOrder
+
+Cancel an option order
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::OptionsApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+t_token = 't_token_example' # String | Trade token
+t_time = 't_time_example' # String | Time
+sec_account_id = 'sec_account_id_example' # String | Account ID
+serial_id = 'serial_id_example' # String | UUID
+combo_id = 'combo_id_example' # String | Order combo ID
+
+begin
+  # cancelOptionOrder
+  result = api_instance.cancel_option_order(did, access_token, t_token, t_time, sec_account_id, serial_id, combo_id)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->cancel_option_order: #{e}"
+end
+```
+
+#### Using the cancel_option_order_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> cancel_option_order_with_http_info(did, access_token, t_token, t_time, sec_account_id, serial_id, combo_id)
+
+```ruby
+begin
+  # cancelOptionOrder
+  data, status_code, headers = api_instance.cancel_option_order_with_http_info(did, access_token, t_token, t_time, sec_account_id, serial_id, combo_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->cancel_option_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **t_token** | **String** | Trade token |  |
+| **t_time** | **String** | Time |  |
+| **sec_account_id** | **String** | Account ID |  |
+| **serial_id** | **String** | UUID |  |
+| **combo_id** | **String** | Order combo ID |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## check_option_order
+
+> Object check_option_order(did, access_token, t_token, t_time, account_id, opts)
+
+checkOptionOrder
+
+Check an option order
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::OptionsApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+t_token = 't_token_example' # String | Trade token
+t_time = 't_time_example' # String | Time
+account_id = 'account_id_example' # String | account_id
+opts = {
+  post_option_check_order_request: WebullApiClient::PostOptionCheckOrderRequest.new # PostOptionCheckOrderRequest | 
+}
+
+begin
+  # checkOptionOrder
+  result = api_instance.check_option_order(did, access_token, t_token, t_time, account_id, opts)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->check_option_order: #{e}"
+end
+```
+
+#### Using the check_option_order_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> check_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+
+```ruby
+begin
+  # checkOptionOrder
+  data, status_code, headers = api_instance.check_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->check_option_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **t_token** | **String** | Trade token |  |
+| **t_time** | **String** | Time |  |
+| **account_id** | **String** | account_id |  |
+| **post_option_check_order_request** | [**PostOptionCheckOrderRequest**](PostOptionCheckOrderRequest.md) |  | [optional] |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## get_batch_stock_options

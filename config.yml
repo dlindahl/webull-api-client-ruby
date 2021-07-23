@@ -1,3 +1,4 @@
+generateAliasAsModel: false
 generatorName: ruby
 outputDir: webull-api-client
 inputSpec: swagger.yml

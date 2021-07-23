@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**PostTradeTokenResponseData**](PostTradeTokenResponseData.md) |  | [optional] |
-| **success** | **Boolean** |  | [optional] |
+| **trade_token** | **String** |  | [optional] |
+| **trade_token_expire_in** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -13,8 +13,8 @@
 require 'webull-api-client-ruby'
 
 instance = WebullApiClient::PostTradeTokenResponse.new(
-  data: null,
-  success: null
+  trade_token: null,
+  trade_token_expire_in: null
 )
 ```
 

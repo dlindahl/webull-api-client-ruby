@@ -20,7 +20,6 @@
 | **fifty_two_wk_low** | **String** |  | [optional] |
 | **high** | **String** |  | [optional] |
 | **inception_date** | **Date** |  | [optional] |
-| **latest_dividend_date** | **Date** |  | [optional] |
 | **limit_down** | **String** |  | [optional] |
 | **limit_up** | **String** |  | [optional] |
 | **lot_size** | **String** |  | [optional] |
@@ -71,7 +70,6 @@ instance = WebullApiClient::GetStockQuoteResponse.new(
   fifty_two_wk_low: null,
   high: null,
   inception_date: null,
-  latest_dividend_date: null,
   limit_down: null,
   limit_up: null,
   lot_size: null,

@@ -296,6 +296,12 @@ module WebullApiClient
         ],
         "AuthenticationApi.get_trade_token": [
           {
+          url: "https://trade.webullbroker.com/api",
+          description: "No description provided",
+          }
+        ],
+        "AuthenticationApi.get_trade_token0": [
+          {
           url: "https://tradeapi.webulltrade.com/api/trade",
           description: "No description provided",
           }
@@ -327,6 +333,18 @@ module WebullApiClient
         "DividendsApi.get_dividends": [
           {
           url: "https://tradeapi.webulltrade.com/api/trade",
+          description: "No description provided",
+          }
+        ],
+        "OptionsApi.cancel_option_order": [
+          {
+          url: "https://ustrade.webullbroker.com/api/trade",
+          description: "No description provided",
+          }
+        ],
+        "OptionsApi.check_option_order": [
+          {
+          url: "https://ustrade.webullbroker.com/api/trade",
           description: "No description provided",
           }
         ],
@@ -435,6 +453,12 @@ module WebullApiClient
         "PaperApi.place_paper_trade_order": [
           {
           url: "https://act.webullbroker.com/webull-paper-center/api",
+          description: "No description provided",
+          }
+        ],
+        "QuoteApi.get_batch_stock_quote": [
+          {
+          url: "https://quotes-gw.webullfintech.com/api",
           description: "No description provided",
           }
         ],
