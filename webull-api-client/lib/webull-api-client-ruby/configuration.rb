@@ -252,6 +252,10 @@ module WebullApiClient
         {
           url: "https://tradeapi.webulltrade.com/api/trade",
           description: "Trade API",
+        },
+        {
+          url: "https://ustrade.webfullfinance.com/api/trade",
+          description: "Account Info",
         }
       ]
     end
@@ -474,6 +478,12 @@ module WebullApiClient
           description: "No description provided",
           }
         ],
+        "StocksApi.get_chart_data": [
+          {
+          url: "https://quotes-gw.webullfintech.com/api",
+          description: "No description provided",
+          }
+        ],
         "StocksApi.get_fundamentals": [
           {
           url: "https://securitiesapi.webullbroker.com/api",
@@ -501,6 +511,12 @@ module WebullApiClient
         "StocksApi.get_stock_news": [
           {
           url: "https://securitiesapi.webullbroker.com/api",
+          description: "No description provided",
+          }
+        ],
+        "StocksApi.get_stocks": [
+          {
+          url: "https://quotes-gw.webullfintech.com/api",
           description: "No description provided",
           }
         ],

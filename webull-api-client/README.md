@@ -112,11 +112,13 @@ Class | Method | HTTP request | Description
 *WebullApiClient::QuoteApi* | [**get_batch_stock_quote**](docs/QuoteApi.md#get_batch_stock_quote) | **GET** /bgw/quote/realtime | getBatchStockQuote
 *WebullApiClient::QuoteApi* | [**get_stock_quote**](docs/QuoteApi.md#get_stock_quote) | **GET** /quote/tickerRealTimes/v5/{stock} | getStockQuote
 *WebullApiClient::StocksApi* | [**get_active_gainers_losers**](docs/StocksApi.md#get_active_gainers_losers) | **GET** /securities/market/v5/card/stockActivityPc.{direction}/list | getActiveGainersLosers
+*WebullApiClient::StocksApi* | [**get_chart_data**](docs/StocksApi.md#get_chart_data) | **GET** /quote/charts/query | getChartData
 *WebullApiClient::StocksApi* | [**get_fundamentals**](docs/StocksApi.md#get_fundamentals) | **GET** /securities/financial/index/{stock} | getFundamentals
 *WebullApiClient::StocksApi* | [**get_latest_chart_data**](docs/StocksApi.md#get_latest_chart_data) | **GET** /quote/charts/kdata/latest | getLatestChartData
 *WebullApiClient::StocksApi* | [**get_stock_analysis**](docs/StocksApi.md#get_stock_analysis) | **GET** /securities/ticker/v5/analysis/{stock} | getStockAnalysis
 *WebullApiClient::StocksApi* | [**get_stock_id**](docs/StocksApi.md#get_stock_id) | **GET** /search/tickers5 | getStockID
 *WebullApiClient::StocksApi* | [**get_stock_news**](docs/StocksApi.md#get_stock_news) | **GET** /information/news/v5/tickerNews/{stock} | getStockNews
+*WebullApiClient::StocksApi* | [**get_stocks**](docs/StocksApi.md#get_stocks) | **GET** /search/pc/tickers | getStocks
 *WebullApiClient::StocksApi* | [**get_ticker_chart**](docs/StocksApi.md#get_ticker_chart) | **GET** /quote/tickerChartDatas/v5/{stock} | getTickerChart
 *WebullApiClient::StocksApi* | [**screener**](docs/StocksApi.md#screener) | **GET** /wlas/screener/ng/query | screener
 *WebullApiClient::UserApi* | [**get_user**](docs/UserApi.md#get_user) | **GET** /user | getUser
@@ -203,6 +205,7 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::GetUserDetailsResponse](docs/GetUserDetailsResponse.md)
  - [WebullApiClient::InlineObject](docs/InlineObject.md)
  - [WebullApiClient::Leg](docs/Leg.md)
+ - [WebullApiClient::LookupStockResponse](docs/LookupStockResponse.md)
  - [WebullApiClient::LookupTickerResponse](docs/LookupTickerResponse.md)
  - [WebullApiClient::LookupTickerResponseList](docs/LookupTickerResponseList.md)
  - [WebullApiClient::OptionContract](docs/OptionContract.md)

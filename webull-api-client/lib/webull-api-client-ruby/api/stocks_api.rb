@@ -110,6 +110,119 @@ module WebullApiClient
       return data, status_code, headers
     end
 
+    # getChartData
+    # Get all chart data for the given interval count
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param ticker_ids [Integer] The Ticker IDs to quote
+    # @param extend_trading [Integer] Whether to include pre-market and afterhours bars. &#39;1&#39; is used for pre-market and after-hours bars.
+    # @param type [String] The precision of the chart data
+    # @param count [Integer] The number of bars to return
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :ver null (default to '3.37.7')
+    # @option opts [String] :device_type null (default to 'Web')
+    # @option opts [Float] :timestamp The selected day of chart date to request
+    # @return [Array<Object>]
+    def get_chart_data(did, access_token, ticker_ids, extend_trading, type, count, opts = {})
+      data, _status_code, _headers = get_chart_data_with_http_info(did, access_token, ticker_ids, extend_trading, type, count, opts)
+      data
+    end
+
+    # getChartData
+    # Get all chart data for the given interval count
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param ticker_ids [Integer] The Ticker IDs to quote
+    # @param extend_trading [Integer] Whether to include pre-market and afterhours bars. &#39;1&#39; is used for pre-market and after-hours bars.
+    # @param type [String] The precision of the chart data
+    # @param count [Integer] The number of bars to return
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :ver null
+    # @option opts [String] :device_type null
+    # @option opts [Float] :timestamp The selected day of chart date to request
+    # @return [Array<(Array<Object>, Integer, Hash)>] Array<Object> data, response status code and response headers
+    def get_chart_data_with_http_info(did, access_token, ticker_ids, extend_trading, type, count, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StocksApi.get_chart_data ...'
+      end
+      # verify the required parameter 'did' is set
+      if @api_client.config.client_side_validation && did.nil?
+        fail ArgumentError, "Missing the required parameter 'did' when calling StocksApi.get_chart_data"
+      end
+      # verify the required parameter 'access_token' is set
+      if @api_client.config.client_side_validation && access_token.nil?
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling StocksApi.get_chart_data"
+      end
+      # verify the required parameter 'ticker_ids' is set
+      if @api_client.config.client_side_validation && ticker_ids.nil?
+        fail ArgumentError, "Missing the required parameter 'ticker_ids' when calling StocksApi.get_chart_data"
+      end
+      # verify the required parameter 'extend_trading' is set
+      if @api_client.config.client_side_validation && extend_trading.nil?
+        fail ArgumentError, "Missing the required parameter 'extend_trading' when calling StocksApi.get_chart_data"
+      end
+      # verify the required parameter 'type' is set
+      if @api_client.config.client_side_validation && type.nil?
+        fail ArgumentError, "Missing the required parameter 'type' when calling StocksApi.get_chart_data"
+      end
+      # verify enum value
+      allowable_values = ["m1", "m5", "m15", "m30", "h1", "h2", "h4", "d1", "w1"]
+      if @api_client.config.client_side_validation && !allowable_values.include?(type)
+        fail ArgumentError, "invalid value for \"type\", must be one of #{allowable_values}"
+      end
+      # verify the required parameter 'count' is set
+      if @api_client.config.client_side_validation && count.nil?
+        fail ArgumentError, "Missing the required parameter 'count' when calling StocksApi.get_chart_data"
+      end
+      # resource path
+      local_var_path = '/quote/charts/query'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'tickerIds'] = ticker_ids
+      query_params[:'extendTrading'] = extend_trading
+      query_params[:'type'] = type
+      query_params[:'count'] = count
+      query_params[:'timestamp'] = opts[:'timestamp'] if !opts[:'timestamp'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'did'] = did
+      header_params[:'access_token'] = access_token
+      header_params[:'ver'] = opts[:'ver'] if !opts[:'ver'].nil?
+      header_params[:'device-type'] = opts[:'device_type'] if !opts[:'device_type'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<Object>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"StocksApi.get_chart_data",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StocksApi#get_chart_data\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # getFundamentals
     # getFundamentals
     # @param did [String] Device ID
@@ -528,6 +641,98 @@ module WebullApiClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StocksApi#get_stock_news\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # getStocks
+    # Lookup stock tickers
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param keyword [String] Stock ticker
+    # @param page_index [String] Page
+    # @param page_size [String] Number of results per page
+    # @param [Hash] opts the optional parameters
+    # @return [LookupStockResponse]
+    def get_stocks(did, access_token, keyword, page_index, page_size, opts = {})
+      data, _status_code, _headers = get_stocks_with_http_info(did, access_token, keyword, page_index, page_size, opts)
+      data
+    end
+
+    # getStocks
+    # Lookup stock tickers
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param keyword [String] Stock ticker
+    # @param page_index [String] Page
+    # @param page_size [String] Number of results per page
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LookupStockResponse, Integer, Hash)>] LookupStockResponse data, response status code and response headers
+    def get_stocks_with_http_info(did, access_token, keyword, page_index, page_size, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StocksApi.get_stocks ...'
+      end
+      # verify the required parameter 'did' is set
+      if @api_client.config.client_side_validation && did.nil?
+        fail ArgumentError, "Missing the required parameter 'did' when calling StocksApi.get_stocks"
+      end
+      # verify the required parameter 'access_token' is set
+      if @api_client.config.client_side_validation && access_token.nil?
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling StocksApi.get_stocks"
+      end
+      # verify the required parameter 'keyword' is set
+      if @api_client.config.client_side_validation && keyword.nil?
+        fail ArgumentError, "Missing the required parameter 'keyword' when calling StocksApi.get_stocks"
+      end
+      # verify the required parameter 'page_index' is set
+      if @api_client.config.client_side_validation && page_index.nil?
+        fail ArgumentError, "Missing the required parameter 'page_index' when calling StocksApi.get_stocks"
+      end
+      # verify the required parameter 'page_size' is set
+      if @api_client.config.client_side_validation && page_size.nil?
+        fail ArgumentError, "Missing the required parameter 'page_size' when calling StocksApi.get_stocks"
+      end
+      # resource path
+      local_var_path = '/search/pc/tickers'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'keyword'] = keyword
+      query_params[:'pageIndex'] = page_index
+      query_params[:'pageSize'] = page_size
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'did'] = did
+      header_params[:'access_token'] = access_token
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LookupStockResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"StocksApi.get_stocks",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StocksApi#get_stocks\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

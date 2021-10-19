@@ -22,6 +22,8 @@ servers:
     description: Paper Trade API
   - url: https://tradeapi.webulltrade.com/api/trade
     description: Trade API
+  - url: https://ustrade.webfullfinance.com/api/trade
+    description: Account Info
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
@@ -1181,6 +1183,120 @@ paths:
       summary: getTradeToken
       tags:
         - authentication
+  "/quote/charts/query":
+    get:
+      description: Get all chart data for the given interval count
+      deprecated: false
+      operationId: getChartData
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: ver
+          description:
+          schema:
+            type: string
+            default: 3.37.7
+        - in: header
+          name: device-type
+          description:
+          schema:
+            type: string
+            default: Web
+        - description: The Ticker IDs to quote
+          in: query
+          name: tickerIds
+          required: true
+          schema:
+            type: integer
+            format: int32
+            default: 913243251
+        - description: Whether to include pre-market and afterhours bars. '1' is used for pre-market and after-hours bars.
+          in: query
+          name: extendTrading
+          required: true
+          schema:
+            type: integer
+            format: int32
+            default: 1
+        - description: The precision of the chart data
+          in: query
+          name: type
+          required: true
+          schema:
+            type: string
+            default: m1
+            enum:
+              - m1
+              - m5
+              - m15
+              - m30
+              - h1
+              - h2
+              - h4
+              - d1
+              - w1
+        - description: The number of bars to return
+          in: query
+          name: count
+          required: true
+          schema:
+            type: integer
+            default: 800
+        - description: The selected day of chart date to request
+          in: query
+          name: timestamp
+          required: false
+          schema:
+            type: number
+            format: int32
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetChartDataResponse"
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://quotes-gw.webullfintech.com/api'
+      summary: getChartData
+      tags:
+        - stocks
   "/quote/charts/kdata/latest":
     get:
       deprecated: false
@@ -1716,6 +1832,80 @@ paths:
       summary: getBatchStockQuote
       tags:
         - quote
+  "/search/pc/tickers":
+    get:
+      description: Lookup stock tickers
+      operationId: getStocks
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Stock ticker
+          in: query
+          name: keyword
+          required: true
+          schema:
+            type: string
+        - description: Page
+          in: query
+          name: pageIndex
+          required: true
+          schema:
+            default: 1
+            type: string
+        - description: Number of results per page
+          in: query
+          name: pageSize
+          required: true
+          schema:
+            default: 20
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LookupStockResponse"
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://quotes-gw.webullfintech.com/api'
+      summary: getStocks
+      tags:
+        - stocks
   "/search/tickers5":
     get:
       deprecated: false
@@ -3770,6 +3960,51 @@ components:
           type: array
         success:
           type: boolean
+    GetChartDataResponse:
+      items:
+        properties:
+          cleanDuration:
+            type: integer
+          cleanTime:
+            format: int32
+            type: integer
+          data:
+            items:
+              description: Comma separated string of timestamp and pricing
+              type: string
+            type: array
+          dates:
+            items:
+              properties:
+                avgShow:
+                  type: integer
+                end:
+                  type: string
+                start:
+                  type: string
+                type:
+                  description: Trading hours for pre-market, open, and after hours
+                  type: string
+                  enum:
+                    - F
+                    - T
+                    - A
+            type: array
+          exchangeStatus:
+            type: boolean
+          hasMore:
+            type: integer
+          preClose:
+            type: string
+          tickerId:
+            description: X
+            type: integer
+            format: int32
+          timeZone:
+            description: X
+            type: string
+        type: object
+      type: array
     GetLatestChartDataResponse:
       items:
         properties:
@@ -5015,6 +5250,55 @@ components:
           title: string
           type: string
       type: object
+    LookupStockResponse:
+      properties:
+        data:
+          items:
+            properties:
+              currencyCode:
+                type: string
+              currencyId:
+                type: integer
+              derivativeSupport:
+                type: integer
+              disExchangeCode:
+                type: string
+              disSymbol:
+                type: string
+              exchangeCode:
+                type: string
+              exchangeId:
+                type: integer
+              exchangeTrade:
+                type: boolean
+              listStatus:
+                type: integer
+              name:
+                type: string
+              regionCode:
+                type: string
+              regionId:
+                type: integer
+              secType:
+                items:
+                  format: int32
+                  type: integer
+                type: array
+              symbol:
+                type: string
+              template:
+                type: string
+              tickerId:
+                format: int32
+                type: integer
+              tinyName:
+                type: string
+              type:
+                type: integer
+          type: array
+        hasMore:
+          title: TRUE if more results exist
+          type: boolean
     LookupTickerResponse:
       properties:
         categoryId:

@@ -88,6 +88,7 @@ docs/GetTransfersRequest.md
 docs/GetUserDetailsResponse.md
 docs/InlineObject.md
 docs/Leg.md
+docs/LookupStockResponse.md
 docs/LookupTickerResponse.md
 docs/LookupTickerResponseList.md
 docs/OptionContract.md
@@ -225,6 +226,7 @@ lib/webull-api-client-ruby/models/get_transfers_request.rb
 lib/webull-api-client-ruby/models/get_user_details_response.rb
 lib/webull-api-client-ruby/models/inline_object.rb
 lib/webull-api-client-ruby/models/leg.rb
+lib/webull-api-client-ruby/models/lookup_stock_response.rb
 lib/webull-api-client-ruby/models/lookup_ticker_response.rb
 lib/webull-api-client-ruby/models/lookup_ticker_response_list.rb
 lib/webull-api-client-ruby/models/option_contract.rb

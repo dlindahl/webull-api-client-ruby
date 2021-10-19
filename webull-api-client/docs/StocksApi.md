@@ -5,11 +5,13 @@ All URIs are relative to *https://quoteapi.webull.com/api*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**get_active_gainers_losers**](StocksApi.md#get_active_gainers_losers) | **GET** /securities/market/v5/card/stockActivityPc.{direction}/list | getActiveGainersLosers |
+| [**get_chart_data**](StocksApi.md#get_chart_data) | **GET** /quote/charts/query | getChartData |
 | [**get_fundamentals**](StocksApi.md#get_fundamentals) | **GET** /securities/financial/index/{stock} | getFundamentals |
 | [**get_latest_chart_data**](StocksApi.md#get_latest_chart_data) | **GET** /quote/charts/kdata/latest | getLatestChartData |
 | [**get_stock_analysis**](StocksApi.md#get_stock_analysis) | **GET** /securities/ticker/v5/analysis/{stock} | getStockAnalysis |
 | [**get_stock_id**](StocksApi.md#get_stock_id) | **GET** /search/tickers5 | getStockID |
 | [**get_stock_news**](StocksApi.md#get_stock_news) | **GET** /information/news/v5/tickerNews/{stock} | getStockNews |
+| [**get_stocks**](StocksApi.md#get_stocks) | **GET** /search/pc/tickers | getStocks |
 | [**get_ticker_chart**](StocksApi.md#get_ticker_chart) | **GET** /quote/tickerChartDatas/v5/{stock} | getTickerChart |
 | [**screener**](StocksApi.md#screener) | **GET** /wlas/screener/ng/query | screener |
 
@@ -75,6 +77,88 @@ end
 ### Return type
 
 [**Array&lt;ActiveGainersLosers&gt;**](ActiveGainersLosers.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_chart_data
+
+> Array&lt;Object&gt; get_chart_data(did, access_token, ticker_ids, extend_trading, type, count, opts)
+
+getChartData
+
+Get all chart data for the given interval count
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::StocksApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+ticker_ids = 56 # Integer | The Ticker IDs to quote
+extend_trading = 56 # Integer | Whether to include pre-market and afterhours bars. '1' is used for pre-market and after-hours bars.
+type = 'm1' # String | The precision of the chart data
+count = 56 # Integer | The number of bars to return
+opts = {
+  ver: 'ver_example', # String | null
+  device_type: 'device_type_example', # String | null
+  timestamp: 8.14 # Float | The selected day of chart date to request
+}
+
+begin
+  # getChartData
+  result = api_instance.get_chart_data(did, access_token, ticker_ids, extend_trading, type, count, opts)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling StocksApi->get_chart_data: #{e}"
+end
+```
+
+#### Using the get_chart_data_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Array&lt;Object&gt;, Integer, Hash)> get_chart_data_with_http_info(did, access_token, ticker_ids, extend_trading, type, count, opts)
+
+```ruby
+begin
+  # getChartData
+  data, status_code, headers = api_instance.get_chart_data_with_http_info(did, access_token, ticker_ids, extend_trading, type, count, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Array&lt;Object&gt;
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling StocksApi->get_chart_data_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **ticker_ids** | **Integer** | The Ticker IDs to quote | [default to 913243251] |
+| **extend_trading** | **Integer** | Whether to include pre-market and afterhours bars. &#39;1&#39; is used for pre-market and after-hours bars. | [default to 1] |
+| **type** | **String** | The precision of the chart data | [default to &#39;m1&#39;] |
+| **count** | **Integer** | The number of bars to return | [default to 800] |
+| **ver** | **String** | null | [optional][default to &#39;3.37.7&#39;] |
+| **device_type** | **String** | null | [optional][default to &#39;Web&#39;] |
+| **timestamp** | **Float** | The selected day of chart date to request | [optional] |
+
+### Return type
+
+**Array&lt;Object&gt;**
 
 ### Authorization
 
@@ -425,6 +509,78 @@ end
 ### Return type
 
 [**GetNewsResponse**](GetNewsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_stocks
+
+> <LookupStockResponse> get_stocks(did, access_token, keyword, page_index, page_size)
+
+getStocks
+
+Lookup stock tickers
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::StocksApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+keyword = 'keyword_example' # String | Stock ticker
+page_index = 'page_index_example' # String | Page
+page_size = 'page_size_example' # String | Number of results per page
+
+begin
+  # getStocks
+  result = api_instance.get_stocks(did, access_token, keyword, page_index, page_size)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling StocksApi->get_stocks: #{e}"
+end
+```
+
+#### Using the get_stocks_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LookupStockResponse>, Integer, Hash)> get_stocks_with_http_info(did, access_token, keyword, page_index, page_size)
+
+```ruby
+begin
+  # getStocks
+  data, status_code, headers = api_instance.get_stocks_with_http_info(did, access_token, keyword, page_index, page_size)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LookupStockResponse>
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling StocksApi->get_stocks_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **keyword** | **String** | Stock ticker |  |
+| **page_index** | **String** | Page | [default to &#39;1&#39;] |
+| **page_size** | **String** | Number of results per page | [default to &#39;20&#39;] |
+
+### Return type
+
+[**LookupStockResponse**](LookupStockResponse.md)
 
 ### Authorization
 
