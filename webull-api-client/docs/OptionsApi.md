@@ -6,11 +6,14 @@ All URIs are relative to *https://quoteapi.webull.com/api*
 | ------ | ------------ | ----------- |
 | [**cancel_option_order**](OptionsApi.md#cancel_option_order) | **GET** /v2/option/cancelOrder | cancelOptionOrder |
 | [**check_option_order**](OptionsApi.md#check_option_order) | **POST** /v2/option/checkOrder/{account_id} | checkOptionOrder |
+| [**deprecated_place_option_order**](OptionsApi.md#deprecated_place_option_order) | **POST** /v2/option/placeOrder/{account_id} | placeOptionOrder |
+| [**deprecated_replace_option_order**](OptionsApi.md#deprecated_replace_option_order) | **POST** /v2/option/replaceOrder/{account_id} | replaceOptionOrderDeprecated |
 | [**get_batch_stock_options**](OptionsApi.md#get_batch_stock_options) | **GET** /quote/option/quotes/queryBatch | getBatchStockOptions |
 | [**get_option_quotes**](OptionsApi.md#get_option_quotes) | **GET** /quote/option/query/list | getOptionQuotes |
 | [**get_stock_options**](OptionsApi.md#get_stock_options) | **GET** /quote/option/{stock}/list | getStockOptions |
-| [**place_option_order**](OptionsApi.md#place_option_order) | **POST** /v2/option/placeOrder/{account_id} | placeOptionOrder |
-| [**replace_option_order**](OptionsApi.md#replace_option_order) | **POST** /v2/option/replaceOrder/{account_id} | replaceOptionOrder |
+| [**list_orders**](OptionsApi.md#list_orders) | **POST** /v1/webull/order/list | listOrders |
+| [**place_option_order**](OptionsApi.md#place_option_order) | **POST** /v1/webull/order/optionPlace | placeOptionOrder |
+| [**replace_option_order**](OptionsApi.md#replace_option_order) | **POST** /v1/webull/order/optionReplace | replaceOptionOrder |
 
 
 ## cancel_option_order
@@ -150,6 +153,156 @@ end
 | **t_time** | **String** | Time |  |
 | **account_id** | **String** | account_id |  |
 | **post_option_check_order_request** | [**PostOptionCheckOrderRequest**](PostOptionCheckOrderRequest.md) |  | [optional] |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## deprecated_place_option_order
+
+> Object deprecated_place_option_order(did, access_token, t_token, t_time, account_id, opts)
+
+placeOptionOrder
+
+DEPRECATED: Place an option order
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::OptionsApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+t_token = 't_token_example' # String | Trade token
+t_time = 't_time_example' # String | Time
+account_id = 'account_id_example' # String | account_id
+opts = {
+  deprecated_post_option_order_request: WebullApiClient::DeprecatedPostOptionOrderRequest.new # DeprecatedPostOptionOrderRequest | 
+}
+
+begin
+  # placeOptionOrder
+  result = api_instance.deprecated_place_option_order(did, access_token, t_token, t_time, account_id, opts)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->deprecated_place_option_order: #{e}"
+end
+```
+
+#### Using the deprecated_place_option_order_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> deprecated_place_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+
+```ruby
+begin
+  # placeOptionOrder
+  data, status_code, headers = api_instance.deprecated_place_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->deprecated_place_option_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **t_token** | **String** | Trade token |  |
+| **t_time** | **String** | Time |  |
+| **account_id** | **String** | account_id |  |
+| **deprecated_post_option_order_request** | [**DeprecatedPostOptionOrderRequest**](DeprecatedPostOptionOrderRequest.md) |  | [optional] |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## deprecated_replace_option_order
+
+> Object deprecated_replace_option_order(did, access_token, t_token, t_time, account_id, opts)
+
+replaceOptionOrderDeprecated
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::OptionsApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+t_token = 't_token_example' # String | Trade token
+t_time = 't_time_example' # String | Time
+account_id = 'account_id_example' # String | account_id
+opts = {
+  replace_option_order_request: WebullApiClient::ReplaceOptionOrderRequest.new # ReplaceOptionOrderRequest | 
+}
+
+begin
+  # replaceOptionOrderDeprecated
+  result = api_instance.deprecated_replace_option_order(did, access_token, t_token, t_time, account_id, opts)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->deprecated_replace_option_order: #{e}"
+end
+```
+
+#### Using the deprecated_replace_option_order_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> deprecated_replace_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+
+```ruby
+begin
+  # replaceOptionOrderDeprecated
+  data, status_code, headers = api_instance.deprecated_replace_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->deprecated_replace_option_order_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **t_token** | **String** | Trade token |  |
+| **t_time** | **String** | Time |  |
+| **account_id** | **String** | account_id |  |
+| **replace_option_order_request** | [**ReplaceOptionOrderRequest**](ReplaceOptionOrderRequest.md) |  | [optional] |
 
 ### Return type
 
@@ -379,9 +532,85 @@ No authorization required
 - **Accept**: application/json
 
 
+## list_orders
+
+> Array&lt;Object&gt; list_orders(did, access_token, t_time, t_token, sec_account_id, opts)
+
+listOrders
+
+List all orders matching optional filter values.
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::OptionsApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+t_time = 't_time_example' # String | Time
+t_token = 't_token_example' # String | Trade token
+sec_account_id = 'sec_account_id_example' # String | Account ID
+opts = {
+  post_order_list_request: WebullApiClient::PostOrderListRequest.new # PostOrderListRequest | 
+}
+
+begin
+  # listOrders
+  result = api_instance.list_orders(did, access_token, t_time, t_token, sec_account_id, opts)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->list_orders: #{e}"
+end
+```
+
+#### Using the list_orders_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Array&lt;Object&gt;, Integer, Hash)> list_orders_with_http_info(did, access_token, t_time, t_token, sec_account_id, opts)
+
+```ruby
+begin
+  # listOrders
+  data, status_code, headers = api_instance.list_orders_with_http_info(did, access_token, t_time, t_token, sec_account_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Array&lt;Object&gt;
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->list_orders_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **t_time** | **String** | Time |  |
+| **t_token** | **String** | Trade token |  |
+| **sec_account_id** | **String** | Account ID |  |
+| **post_order_list_request** | [**PostOrderListRequest**](PostOrderListRequest.md) |  | [optional] |
+
+### Return type
+
+**Array&lt;Object&gt;**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## place_option_order
 
-> Object place_option_order(did, access_token, t_token, t_time, account_id, opts)
+> Object place_option_order(did, access_token, t_token, t_time, sec_account_id, opts)
 
 placeOptionOrder
 
@@ -398,14 +627,14 @@ did = 'did_example' # String | Device ID
 access_token = 'access_token_example' # String | Access token
 t_token = 't_token_example' # String | Trade token
 t_time = 't_time_example' # String | Time
-account_id = 'account_id_example' # String | account_id
+sec_account_id = 'sec_account_id_example' # String | secAccountId
 opts = {
   post_option_order_request: WebullApiClient::PostOptionOrderRequest.new # PostOptionOrderRequest | 
 }
 
 begin
   # placeOptionOrder
-  result = api_instance.place_option_order(did, access_token, t_token, t_time, account_id, opts)
+  result = api_instance.place_option_order(did, access_token, t_token, t_time, sec_account_id, opts)
   p result
 rescue WebullApiClient::ApiError => e
   puts "Error when calling OptionsApi->place_option_order: #{e}"
@@ -416,12 +645,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Object, Integer, Hash)> place_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+> <Array(Object, Integer, Hash)> place_option_order_with_http_info(did, access_token, t_token, t_time, sec_account_id, opts)
 
 ```ruby
 begin
   # placeOptionOrder
-  data, status_code, headers = api_instance.place_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+  data, status_code, headers = api_instance.place_option_order_with_http_info(did, access_token, t_token, t_time, sec_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => Object
@@ -438,7 +667,7 @@ end
 | **access_token** | **String** | Access token |  |
 | **t_token** | **String** | Trade token |  |
 | **t_time** | **String** | Time |  |
-| **account_id** | **String** | account_id |  |
+| **sec_account_id** | **String** | secAccountId |  |
 | **post_option_order_request** | [**PostOptionOrderRequest**](PostOptionOrderRequest.md) |  | [optional] |
 
 ### Return type
@@ -457,7 +686,7 @@ No authorization required
 
 ## replace_option_order
 
-> Object replace_option_order(did, access_token, t_token, t_time, account_id, opts)
+> Object replace_option_order(did, access_token, t_token, t_time, sec_account_id, opts)
 
 replaceOptionOrder
 
@@ -472,14 +701,14 @@ did = 'did_example' # String | Device ID
 access_token = 'access_token_example' # String | Access token
 t_token = 't_token_example' # String | Trade token
 t_time = 't_time_example' # String | Time
-account_id = 'account_id_example' # String | account_id
+sec_account_id = 'sec_account_id_example' # String | Account ID
 opts = {
-  replace_option_order_request: WebullApiClient::ReplaceOptionOrderRequest.new # ReplaceOptionOrderRequest | 
+  post_option_order_request: WebullApiClient::PostOptionOrderRequest.new # PostOptionOrderRequest | 
 }
 
 begin
   # replaceOptionOrder
-  result = api_instance.replace_option_order(did, access_token, t_token, t_time, account_id, opts)
+  result = api_instance.replace_option_order(did, access_token, t_token, t_time, sec_account_id, opts)
   p result
 rescue WebullApiClient::ApiError => e
   puts "Error when calling OptionsApi->replace_option_order: #{e}"
@@ -490,12 +719,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Object, Integer, Hash)> replace_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+> <Array(Object, Integer, Hash)> replace_option_order_with_http_info(did, access_token, t_token, t_time, sec_account_id, opts)
 
 ```ruby
 begin
   # replaceOptionOrder
-  data, status_code, headers = api_instance.replace_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+  data, status_code, headers = api_instance.replace_option_order_with_http_info(did, access_token, t_token, t_time, sec_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => Object
@@ -512,8 +741,8 @@ end
 | **access_token** | **String** | Access token |  |
 | **t_token** | **String** | Trade token |  |
 | **t_time** | **String** | Time |  |
-| **account_id** | **String** | account_id |  |
-| **replace_option_order_request** | [**ReplaceOptionOrderRequest**](ReplaceOptionOrderRequest.md) |  | [optional] |
+| **sec_account_id** | **String** | Account ID |  |
+| **post_option_order_request** | [**PostOptionOrderRequest**](PostOptionOrderRequest.md) |  | [optional] |
 
 ### Return type
 

@@ -14,25 +14,42 @@ require 'date'
 require 'time'
 
 module WebullApiClient
-  class OptionOrder
-    attr_accessor :quantity
+  class PostOrderListRequest
+    # Start date for orders (\"1970-01-01\")
+    attr_accessor :start_time_str
 
+    # End date for orders
+    attr_accessor :end_time_str
+
+    # Date type
+    attr_accessor :date_type
+
+    # Page size
+    attr_accessor :page_size
+
+    # Last create time
+    attr_accessor :last_create_time0
+
+    # Order action
     attr_accessor :action
 
+    # Status of order
+    attr_accessor :status
+
+    # Ticker ID of order
     attr_accessor :ticker_id
-
-    attr_accessor :ticker_type
-
-    attr_accessor :order_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'quantity' => :'quantity',
+        :'start_time_str' => :'startTimeStr',
+        :'end_time_str' => :'endTimeStr',
+        :'date_type' => :'dateType',
+        :'page_size' => :'pageSize',
+        :'last_create_time0' => :'lastCreateTime0',
         :'action' => :'action',
-        :'ticker_id' => :'tickerId',
-        :'ticker_type' => :'tickerType',
-        :'order_id' => :'orderId'
+        :'status' => :'status',
+        :'ticker_id' => :'tickerId'
       }
     end
 
@@ -44,11 +61,14 @@ module WebullApiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'quantity' => :'Integer',
-        :'action' => :'OrderSide',
-        :'ticker_id' => :'Integer',
-        :'ticker_type' => :'String',
-        :'order_id' => :'String'
+        :'start_time_str' => :'String',
+        :'end_time_str' => :'String',
+        :'date_type' => :'String',
+        :'page_size' => :'Float',
+        :'last_create_time0' => :'Float',
+        :'action' => :'String',
+        :'status' => :'String',
+        :'ticker_id' => :'Float'
       }
     end
 
@@ -62,37 +82,47 @@ module WebullApiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::OptionOrder` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::PostOrderListRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::OptionOrder`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::PostOrderListRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'quantity')
-        self.quantity = attributes[:'quantity']
+      if attributes.key?(:'start_time_str')
+        self.start_time_str = attributes[:'start_time_str']
+      end
+
+      if attributes.key?(:'end_time_str')
+        self.end_time_str = attributes[:'end_time_str']
+      end
+
+      if attributes.key?(:'date_type')
+        self.date_type = attributes[:'date_type']
+      end
+
+      if attributes.key?(:'page_size')
+        self.page_size = attributes[:'page_size']
+      end
+
+      if attributes.key?(:'last_create_time0')
+        self.last_create_time0 = attributes[:'last_create_time0']
       end
 
       if attributes.key?(:'action')
         self.action = attributes[:'action']
       end
 
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
       if attributes.key?(:'ticker_id')
         self.ticker_id = attributes[:'ticker_id']
-      end
-
-      if attributes.key?(:'ticker_type')
-        self.ticker_type = attributes[:'ticker_type']
-      else
-        self.ticker_type = 'OPTION'
-      end
-
-      if attributes.key?(:'order_id')
-        self.order_id = attributes[:'order_id']
       end
     end
 
@@ -114,11 +144,14 @@ module WebullApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          quantity == o.quantity &&
+          start_time_str == o.start_time_str &&
+          end_time_str == o.end_time_str &&
+          date_type == o.date_type &&
+          page_size == o.page_size &&
+          last_create_time0 == o.last_create_time0 &&
           action == o.action &&
-          ticker_id == o.ticker_id &&
-          ticker_type == o.ticker_type &&
-          order_id == o.order_id
+          status == o.status &&
+          ticker_id == o.ticker_id
     end
 
     # @see the `==` method
@@ -130,7 +163,7 @@ module WebullApiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [quantity, action, ticker_id, ticker_type, order_id].hash
+      [start_time_str, end_time_str, date_type, page_size, last_create_time0, action, status, ticker_id].hash
     end
 
     # Builds the object from hash

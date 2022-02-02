@@ -352,6 +352,18 @@ module WebullApiClient
           description: "No description provided",
           }
         ],
+        "OptionsApi.deprecated_place_option_order": [
+          {
+          url: "https://tradeapi.webulltrade.com/api/trade",
+          description: "No description provided",
+          }
+        ],
+        "OptionsApi.deprecated_replace_option_order": [
+          {
+          url: "https://tradeapi.webulltrade.com/api/trade",
+          description: "No description provided",
+          }
+        ],
         "OptionsApi.get_batch_stock_options": [
           {
           url: "https://quotes-gw.webullbroker.com/api",
@@ -370,15 +382,21 @@ module WebullApiClient
           description: "No description provided",
           }
         ],
+        "OptionsApi.list_orders": [
+          {
+          url: "https://ustrade.webullfinance.com/api/trading",
+          description: "No description provided",
+          }
+        ],
         "OptionsApi.place_option_order": [
           {
-          url: "https://tradeapi.webulltrade.com/api/trade",
+          url: "https://ustrade.webullfinance.com/api/trading",
           description: "No description provided",
           }
         ],
         "OptionsApi.replace_option_order": [
           {
-          url: "https://tradeapi.webulltrade.com/api/trade",
+          url: "https://ustrade.webullfinance.com/api/trading",
           description: "No description provided",
           }
         ],
@@ -400,7 +418,7 @@ module WebullApiClient
           description: "No description provided",
           }
         ],
-        "OrderApi.get_orders": [
+        "OrderApi.deprecated_get_orders": [
           {
           url: "https://tradeapi.webulltrade.com/api/trade",
           description: "No description provided",
@@ -409,6 +427,12 @@ module WebullApiClient
         "OrderApi.is_tradeable": [
           {
           url: "https://tradeapi.webulltrade.com/api/trade",
+          description: "No description provided",
+          }
+        ],
+        "OrderApi.list_orders": [
+          {
+          url: "https://ustrade.webullfinance.com/api/trading",
           description: "No description provided",
           }
         ],
@@ -535,6 +559,30 @@ module WebullApiClient
         "UserApi.get_user": [
           {
           url: "https://userapi.webull.com/api",
+          description: "No description provided",
+          }
+        ],
+        "WebApi.cancel_option_order": [
+          {
+          url: "https://ustrade.webullbroker.com/api/trade",
+          description: "No description provided",
+          }
+        ],
+        "WebApi.list_orders": [
+          {
+          url: "https://ustrade.webullfinance.com/api/trading",
+          description: "No description provided",
+          }
+        ],
+        "WebApi.place_option_order": [
+          {
+          url: "https://ustrade.webullfinance.com/api/trading",
+          description: "No description provided",
+          }
+        ],
+        "WebApi.replace_option_order": [
+          {
+          url: "https://ustrade.webullfinance.com/api/trading",
           description: "No description provided",
           }
         ],

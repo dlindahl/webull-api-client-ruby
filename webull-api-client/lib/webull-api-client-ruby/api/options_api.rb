@@ -220,6 +220,194 @@ module WebullApiClient
       return data, status_code, headers
     end
 
+    # placeOptionOrder
+    # DEPRECATED: Place an option order
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param t_token [String] Trade token
+    # @param t_time [String] Time
+    # @param account_id [String] account_id
+    # @param [Hash] opts the optional parameters
+    # @option opts [DeprecatedPostOptionOrderRequest] :deprecated_post_option_order_request 
+    # @return [Object]
+    def deprecated_place_option_order(did, access_token, t_token, t_time, account_id, opts = {})
+      data, _status_code, _headers = deprecated_place_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+      data
+    end
+
+    # placeOptionOrder
+    # DEPRECATED: Place an option order
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param t_token [String] Trade token
+    # @param t_time [String] Time
+    # @param account_id [String] account_id
+    # @param [Hash] opts the optional parameters
+    # @option opts [DeprecatedPostOptionOrderRequest] :deprecated_post_option_order_request 
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def deprecated_place_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OptionsApi.deprecated_place_option_order ...'
+      end
+      # verify the required parameter 'did' is set
+      if @api_client.config.client_side_validation && did.nil?
+        fail ArgumentError, "Missing the required parameter 'did' when calling OptionsApi.deprecated_place_option_order"
+      end
+      # verify the required parameter 'access_token' is set
+      if @api_client.config.client_side_validation && access_token.nil?
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling OptionsApi.deprecated_place_option_order"
+      end
+      # verify the required parameter 't_token' is set
+      if @api_client.config.client_side_validation && t_token.nil?
+        fail ArgumentError, "Missing the required parameter 't_token' when calling OptionsApi.deprecated_place_option_order"
+      end
+      # verify the required parameter 't_time' is set
+      if @api_client.config.client_side_validation && t_time.nil?
+        fail ArgumentError, "Missing the required parameter 't_time' when calling OptionsApi.deprecated_place_option_order"
+      end
+      # verify the required parameter 'account_id' is set
+      if @api_client.config.client_side_validation && account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'account_id' when calling OptionsApi.deprecated_place_option_order"
+      end
+      # resource path
+      local_var_path = '/v2/option/placeOrder/{account_id}'.sub('{' + 'account_id' + '}', CGI.escape(account_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'did'] = did
+      header_params[:'access_token'] = access_token
+      header_params[:'t_token'] = t_token
+      header_params[:'t_time'] = t_time
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'deprecated_post_option_order_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"OptionsApi.deprecated_place_option_order",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OptionsApi#deprecated_place_option_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # replaceOptionOrderDeprecated
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param t_token [String] Trade token
+    # @param t_time [String] Time
+    # @param account_id [String] account_id
+    # @param [Hash] opts the optional parameters
+    # @option opts [ReplaceOptionOrderRequest] :replace_option_order_request 
+    # @return [Object]
+    def deprecated_replace_option_order(did, access_token, t_token, t_time, account_id, opts = {})
+      data, _status_code, _headers = deprecated_replace_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+      data
+    end
+
+    # replaceOptionOrderDeprecated
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param t_token [String] Trade token
+    # @param t_time [String] Time
+    # @param account_id [String] account_id
+    # @param [Hash] opts the optional parameters
+    # @option opts [ReplaceOptionOrderRequest] :replace_option_order_request 
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def deprecated_replace_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OptionsApi.deprecated_replace_option_order ...'
+      end
+      # verify the required parameter 'did' is set
+      if @api_client.config.client_side_validation && did.nil?
+        fail ArgumentError, "Missing the required parameter 'did' when calling OptionsApi.deprecated_replace_option_order"
+      end
+      # verify the required parameter 'access_token' is set
+      if @api_client.config.client_side_validation && access_token.nil?
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling OptionsApi.deprecated_replace_option_order"
+      end
+      # verify the required parameter 't_token' is set
+      if @api_client.config.client_side_validation && t_token.nil?
+        fail ArgumentError, "Missing the required parameter 't_token' when calling OptionsApi.deprecated_replace_option_order"
+      end
+      # verify the required parameter 't_time' is set
+      if @api_client.config.client_side_validation && t_time.nil?
+        fail ArgumentError, "Missing the required parameter 't_time' when calling OptionsApi.deprecated_replace_option_order"
+      end
+      # verify the required parameter 'account_id' is set
+      if @api_client.config.client_side_validation && account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'account_id' when calling OptionsApi.deprecated_replace_option_order"
+      end
+      # resource path
+      local_var_path = '/v2/option/replaceOrder/{account_id}'.sub('{' + 'account_id' + '}', CGI.escape(account_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'did'] = did
+      header_params[:'access_token'] = access_token
+      header_params[:'t_token'] = t_token
+      header_params[:'t_time'] = t_time
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'replace_option_order_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"OptionsApi.deprecated_replace_option_order",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OptionsApi#deprecated_replace_option_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # getBatchStockOptions
     # @param did [String] Device ID
     # @param access_token [String] Access token
@@ -469,18 +657,114 @@ module WebullApiClient
       return data, status_code, headers
     end
 
+    # listOrders
+    # List all orders matching optional filter values.
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param t_time [String] Time
+    # @param t_token [String] Trade token
+    # @param sec_account_id [String] Account ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [PostOrderListRequest] :post_order_list_request 
+    # @return [Array<Object>]
+    def list_orders(did, access_token, t_time, t_token, sec_account_id, opts = {})
+      data, _status_code, _headers = list_orders_with_http_info(did, access_token, t_time, t_token, sec_account_id, opts)
+      data
+    end
+
+    # listOrders
+    # List all orders matching optional filter values.
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param t_time [String] Time
+    # @param t_token [String] Trade token
+    # @param sec_account_id [String] Account ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [PostOrderListRequest] :post_order_list_request 
+    # @return [Array<(Array<Object>, Integer, Hash)>] Array<Object> data, response status code and response headers
+    def list_orders_with_http_info(did, access_token, t_time, t_token, sec_account_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OptionsApi.list_orders ...'
+      end
+      # verify the required parameter 'did' is set
+      if @api_client.config.client_side_validation && did.nil?
+        fail ArgumentError, "Missing the required parameter 'did' when calling OptionsApi.list_orders"
+      end
+      # verify the required parameter 'access_token' is set
+      if @api_client.config.client_side_validation && access_token.nil?
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling OptionsApi.list_orders"
+      end
+      # verify the required parameter 't_time' is set
+      if @api_client.config.client_side_validation && t_time.nil?
+        fail ArgumentError, "Missing the required parameter 't_time' when calling OptionsApi.list_orders"
+      end
+      # verify the required parameter 't_token' is set
+      if @api_client.config.client_side_validation && t_token.nil?
+        fail ArgumentError, "Missing the required parameter 't_token' when calling OptionsApi.list_orders"
+      end
+      # verify the required parameter 'sec_account_id' is set
+      if @api_client.config.client_side_validation && sec_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'sec_account_id' when calling OptionsApi.list_orders"
+      end
+      # resource path
+      local_var_path = '/v1/webull/order/list'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'secAccountId'] = sec_account_id
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'did'] = did
+      header_params[:'access_token'] = access_token
+      header_params[:'t_time'] = t_time
+      header_params[:'t_token'] = t_token
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'post_order_list_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<Object>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"OptionsApi.list_orders",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OptionsApi#list_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # placeOptionOrder
     # Place an option order
     # @param did [String] Device ID
     # @param access_token [String] Access token
     # @param t_token [String] Trade token
     # @param t_time [String] Time
-    # @param account_id [String] account_id
+    # @param sec_account_id [String] secAccountId
     # @param [Hash] opts the optional parameters
     # @option opts [PostOptionOrderRequest] :post_option_order_request 
     # @return [Object]
-    def place_option_order(did, access_token, t_token, t_time, account_id, opts = {})
-      data, _status_code, _headers = place_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+    def place_option_order(did, access_token, t_token, t_time, sec_account_id, opts = {})
+      data, _status_code, _headers = place_option_order_with_http_info(did, access_token, t_token, t_time, sec_account_id, opts)
       data
     end
 
@@ -490,11 +774,11 @@ module WebullApiClient
     # @param access_token [String] Access token
     # @param t_token [String] Trade token
     # @param t_time [String] Time
-    # @param account_id [String] account_id
+    # @param sec_account_id [String] secAccountId
     # @param [Hash] opts the optional parameters
     # @option opts [PostOptionOrderRequest] :post_option_order_request 
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
-    def place_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts = {})
+    def place_option_order_with_http_info(did, access_token, t_token, t_time, sec_account_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OptionsApi.place_option_order ...'
       end
@@ -514,15 +798,16 @@ module WebullApiClient
       if @api_client.config.client_side_validation && t_time.nil?
         fail ArgumentError, "Missing the required parameter 't_time' when calling OptionsApi.place_option_order"
       end
-      # verify the required parameter 'account_id' is set
-      if @api_client.config.client_side_validation && account_id.nil?
-        fail ArgumentError, "Missing the required parameter 'account_id' when calling OptionsApi.place_option_order"
+      # verify the required parameter 'sec_account_id' is set
+      if @api_client.config.client_side_validation && sec_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'sec_account_id' when calling OptionsApi.place_option_order"
       end
       # resource path
-      local_var_path = '/v2/option/placeOrder/{account_id}'.sub('{' + 'account_id' + '}', CGI.escape(account_id.to_s))
+      local_var_path = '/v1/webull/order/optionPlace'
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'secAccountId'] = sec_account_id
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -569,12 +854,12 @@ module WebullApiClient
     # @param access_token [String] Access token
     # @param t_token [String] Trade token
     # @param t_time [String] Time
-    # @param account_id [String] account_id
+    # @param sec_account_id [String] Account ID
     # @param [Hash] opts the optional parameters
-    # @option opts [ReplaceOptionOrderRequest] :replace_option_order_request 
+    # @option opts [PostOptionOrderRequest] :post_option_order_request 
     # @return [Object]
-    def replace_option_order(did, access_token, t_token, t_time, account_id, opts = {})
-      data, _status_code, _headers = replace_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts)
+    def replace_option_order(did, access_token, t_token, t_time, sec_account_id, opts = {})
+      data, _status_code, _headers = replace_option_order_with_http_info(did, access_token, t_token, t_time, sec_account_id, opts)
       data
     end
 
@@ -583,11 +868,11 @@ module WebullApiClient
     # @param access_token [String] Access token
     # @param t_token [String] Trade token
     # @param t_time [String] Time
-    # @param account_id [String] account_id
+    # @param sec_account_id [String] Account ID
     # @param [Hash] opts the optional parameters
-    # @option opts [ReplaceOptionOrderRequest] :replace_option_order_request 
+    # @option opts [PostOptionOrderRequest] :post_option_order_request 
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
-    def replace_option_order_with_http_info(did, access_token, t_token, t_time, account_id, opts = {})
+    def replace_option_order_with_http_info(did, access_token, t_token, t_time, sec_account_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OptionsApi.replace_option_order ...'
       end
@@ -607,15 +892,16 @@ module WebullApiClient
       if @api_client.config.client_side_validation && t_time.nil?
         fail ArgumentError, "Missing the required parameter 't_time' when calling OptionsApi.replace_option_order"
       end
-      # verify the required parameter 'account_id' is set
-      if @api_client.config.client_side_validation && account_id.nil?
-        fail ArgumentError, "Missing the required parameter 'account_id' when calling OptionsApi.replace_option_order"
+      # verify the required parameter 'sec_account_id' is set
+      if @api_client.config.client_side_validation && sec_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'sec_account_id' when calling OptionsApi.replace_option_order"
       end
       # resource path
-      local_var_path = '/v2/option/replaceOrder/{account_id}'.sub('{' + 'account_id' + '}', CGI.escape(account_id.to_s))
+      local_var_path = '/v1/webull/order/optionReplace'
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'secAccountId'] = sec_account_id
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -632,7 +918,7 @@ module WebullApiClient
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'replace_option_order_request'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'post_option_order_request'])
 
       # return_type
       return_type = opts[:debug_return_type] || 'Object'

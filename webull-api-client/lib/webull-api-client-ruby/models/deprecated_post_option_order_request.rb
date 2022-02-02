@@ -14,25 +14,37 @@ require 'date'
 require 'time'
 
 module WebullApiClient
-  class OptionOrder
-    attr_accessor :quantity
+  class DeprecatedPostOptionOrderRequest
+    attr_accessor :aux_price
 
-    attr_accessor :action
+    attr_accessor :combo_id
 
-    attr_accessor :ticker_id
-
-    attr_accessor :ticker_type
+    attr_accessor :lmt_price
 
     attr_accessor :order_id
+
+    attr_accessor :order_type
+
+    attr_accessor :orders
+
+    attr_accessor :serial_id
+
+    attr_accessor :stp_price
+
+    attr_accessor :time_in_force
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'quantity' => :'quantity',
-        :'action' => :'action',
-        :'ticker_id' => :'tickerId',
-        :'ticker_type' => :'tickerType',
-        :'order_id' => :'orderId'
+        :'aux_price' => :'auxPrice',
+        :'combo_id' => :'comboId',
+        :'lmt_price' => :'lmtPrice',
+        :'order_id' => :'orderId',
+        :'order_type' => :'orderType',
+        :'orders' => :'orders',
+        :'serial_id' => :'serialId',
+        :'stp_price' => :'stpPrice',
+        :'time_in_force' => :'timeInForce'
       }
     end
 
@@ -44,11 +56,15 @@ module WebullApiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'quantity' => :'Integer',
-        :'action' => :'OrderSide',
-        :'ticker_id' => :'Integer',
-        :'ticker_type' => :'String',
-        :'order_id' => :'String'
+        :'aux_price' => :'Float',
+        :'combo_id' => :'String',
+        :'lmt_price' => :'Float',
+        :'order_id' => :'Integer',
+        :'order_type' => :'OrderType',
+        :'orders' => :'Array<DeprecatedOptionOrder>',
+        :'serial_id' => :'String',
+        :'stp_price' => :'Float',
+        :'time_in_force' => :'TimeInForce'
       }
     end
 
@@ -62,37 +78,53 @@ module WebullApiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::OptionOrder` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::DeprecatedPostOptionOrderRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::OptionOrder`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::DeprecatedPostOptionOrderRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'quantity')
-        self.quantity = attributes[:'quantity']
+      if attributes.key?(:'aux_price')
+        self.aux_price = attributes[:'aux_price']
       end
 
-      if attributes.key?(:'action')
-        self.action = attributes[:'action']
+      if attributes.key?(:'combo_id')
+        self.combo_id = attributes[:'combo_id']
       end
 
-      if attributes.key?(:'ticker_id')
-        self.ticker_id = attributes[:'ticker_id']
-      end
-
-      if attributes.key?(:'ticker_type')
-        self.ticker_type = attributes[:'ticker_type']
-      else
-        self.ticker_type = 'OPTION'
+      if attributes.key?(:'lmt_price')
+        self.lmt_price = attributes[:'lmt_price']
       end
 
       if attributes.key?(:'order_id')
         self.order_id = attributes[:'order_id']
+      end
+
+      if attributes.key?(:'order_type')
+        self.order_type = attributes[:'order_type']
+      end
+
+      if attributes.key?(:'orders')
+        if (value = attributes[:'orders']).is_a?(Array)
+          self.orders = value
+        end
+      end
+
+      if attributes.key?(:'serial_id')
+        self.serial_id = attributes[:'serial_id']
+      end
+
+      if attributes.key?(:'stp_price')
+        self.stp_price = attributes[:'stp_price']
+      end
+
+      if attributes.key?(:'time_in_force')
+        self.time_in_force = attributes[:'time_in_force']
       end
     end
 
@@ -114,11 +146,15 @@ module WebullApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          quantity == o.quantity &&
-          action == o.action &&
-          ticker_id == o.ticker_id &&
-          ticker_type == o.ticker_type &&
-          order_id == o.order_id
+          aux_price == o.aux_price &&
+          combo_id == o.combo_id &&
+          lmt_price == o.lmt_price &&
+          order_id == o.order_id &&
+          order_type == o.order_type &&
+          orders == o.orders &&
+          serial_id == o.serial_id &&
+          stp_price == o.stp_price &&
+          time_in_force == o.time_in_force
     end
 
     # @see the `==` method
@@ -130,7 +166,7 @@ module WebullApiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [quantity, action, ticker_id, ticker_type, order_id].hash
+      [aux_price, combo_id, lmt_price, order_id, order_type, orders, serial_id, stp_price, time_in_force].hash
     end
 
     # Builds the object from hash

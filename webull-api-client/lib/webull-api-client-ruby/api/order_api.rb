@@ -295,7 +295,7 @@ module WebullApiClient
     end
 
     # getOrders
-    # Query for orders.
+    # DEPRECATED: Query for orders.
     # @param did [String] Device ID
     # @param access_token [String] Access token
     # @param sec_account_id [String] Numeric ID of the user to get
@@ -309,13 +309,13 @@ module WebullApiClient
     # @option opts [String] :last_create_time0 Last create time
     # @option opts [OrderStatus] :status Status of order
     # @return [Array<Object>]
-    def get_orders(did, access_token, sec_account_id, opts = {})
-      data, _status_code, _headers = get_orders_with_http_info(did, access_token, sec_account_id, opts)
+    def deprecated_get_orders(did, access_token, sec_account_id, opts = {})
+      data, _status_code, _headers = deprecated_get_orders_with_http_info(did, access_token, sec_account_id, opts)
       data
     end
 
     # getOrders
-    # Query for orders.
+    # DEPRECATED: Query for orders.
     # @param did [String] Device ID
     # @param access_token [String] Access token
     # @param sec_account_id [String] Numeric ID of the user to get
@@ -329,21 +329,21 @@ module WebullApiClient
     # @option opts [String] :last_create_time0 Last create time
     # @option opts [OrderStatus] :status Status of order
     # @return [Array<(Array<Object>, Integer, Hash)>] Array<Object> data, response status code and response headers
-    def get_orders_with_http_info(did, access_token, sec_account_id, opts = {})
+    def deprecated_get_orders_with_http_info(did, access_token, sec_account_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: OrderApi.get_orders ...'
+        @api_client.config.logger.debug 'Calling API: OrderApi.deprecated_get_orders ...'
       end
       # verify the required parameter 'did' is set
       if @api_client.config.client_side_validation && did.nil?
-        fail ArgumentError, "Missing the required parameter 'did' when calling OrderApi.get_orders"
+        fail ArgumentError, "Missing the required parameter 'did' when calling OrderApi.deprecated_get_orders"
       end
       # verify the required parameter 'access_token' is set
       if @api_client.config.client_side_validation && access_token.nil?
-        fail ArgumentError, "Missing the required parameter 'access_token' when calling OrderApi.get_orders"
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling OrderApi.deprecated_get_orders"
       end
       # verify the required parameter 'sec_account_id' is set
       if @api_client.config.client_side_validation && sec_account_id.nil?
-        fail ArgumentError, "Missing the required parameter 'sec_account_id' when calling OrderApi.get_orders"
+        fail ArgumentError, "Missing the required parameter 'sec_account_id' when calling OrderApi.deprecated_get_orders"
       end
       # resource path
       local_var_path = '/v2/option/list'
@@ -380,7 +380,7 @@ module WebullApiClient
       auth_names = opts[:debug_auth_names] || []
 
       new_options = opts.merge(
-        :operation => :"OrderApi.get_orders",
+        :operation => :"OrderApi.deprecated_get_orders",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -391,7 +391,7 @@ module WebullApiClient
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: OrderApi#get_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: OrderApi#deprecated_get_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -470,6 +470,102 @@ module WebullApiClient
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: OrderApi#is_tradeable\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # listOrders
+    # List all orders matching optional filter values.
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param t_time [String] Time
+    # @param t_token [String] Trade token
+    # @param sec_account_id [String] Account ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [PostOrderListRequest] :post_order_list_request 
+    # @return [Array<Object>]
+    def list_orders(did, access_token, t_time, t_token, sec_account_id, opts = {})
+      data, _status_code, _headers = list_orders_with_http_info(did, access_token, t_time, t_token, sec_account_id, opts)
+      data
+    end
+
+    # listOrders
+    # List all orders matching optional filter values.
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param t_time [String] Time
+    # @param t_token [String] Trade token
+    # @param sec_account_id [String] Account ID
+    # @param [Hash] opts the optional parameters
+    # @option opts [PostOrderListRequest] :post_order_list_request 
+    # @return [Array<(Array<Object>, Integer, Hash)>] Array<Object> data, response status code and response headers
+    def list_orders_with_http_info(did, access_token, t_time, t_token, sec_account_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OrderApi.list_orders ...'
+      end
+      # verify the required parameter 'did' is set
+      if @api_client.config.client_side_validation && did.nil?
+        fail ArgumentError, "Missing the required parameter 'did' when calling OrderApi.list_orders"
+      end
+      # verify the required parameter 'access_token' is set
+      if @api_client.config.client_side_validation && access_token.nil?
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling OrderApi.list_orders"
+      end
+      # verify the required parameter 't_time' is set
+      if @api_client.config.client_side_validation && t_time.nil?
+        fail ArgumentError, "Missing the required parameter 't_time' when calling OrderApi.list_orders"
+      end
+      # verify the required parameter 't_token' is set
+      if @api_client.config.client_side_validation && t_token.nil?
+        fail ArgumentError, "Missing the required parameter 't_token' when calling OrderApi.list_orders"
+      end
+      # verify the required parameter 'sec_account_id' is set
+      if @api_client.config.client_side_validation && sec_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'sec_account_id' when calling OrderApi.list_orders"
+      end
+      # resource path
+      local_var_path = '/v1/webull/order/list'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'secAccountId'] = sec_account_id
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'did'] = did
+      header_params[:'access_token'] = access_token
+      header_params[:'t_time'] = t_time
+      header_params[:'t_token'] = t_token
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'post_order_list_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<Object>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"OrderApi.list_orders",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OrderApi#list_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

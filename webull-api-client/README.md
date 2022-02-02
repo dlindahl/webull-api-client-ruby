@@ -91,16 +91,20 @@ Class | Method | HTTP request | Description
 *WebullApiClient::DividendsApi* | [**get_dividends**](docs/DividendsApi.md#get_dividends) | **GET** /v2/account/{account_id}/dividends | getDividends
 *WebullApiClient::OptionsApi* | [**cancel_option_order**](docs/OptionsApi.md#cancel_option_order) | **GET** /v2/option/cancelOrder | cancelOptionOrder
 *WebullApiClient::OptionsApi* | [**check_option_order**](docs/OptionsApi.md#check_option_order) | **POST** /v2/option/checkOrder/{account_id} | checkOptionOrder
+*WebullApiClient::OptionsApi* | [**deprecated_place_option_order**](docs/OptionsApi.md#deprecated_place_option_order) | **POST** /v2/option/placeOrder/{account_id} | placeOptionOrder
+*WebullApiClient::OptionsApi* | [**deprecated_replace_option_order**](docs/OptionsApi.md#deprecated_replace_option_order) | **POST** /v2/option/replaceOrder/{account_id} | replaceOptionOrderDeprecated
 *WebullApiClient::OptionsApi* | [**get_batch_stock_options**](docs/OptionsApi.md#get_batch_stock_options) | **GET** /quote/option/quotes/queryBatch | getBatchStockOptions
 *WebullApiClient::OptionsApi* | [**get_option_quotes**](docs/OptionsApi.md#get_option_quotes) | **GET** /quote/option/query/list | getOptionQuotes
 *WebullApiClient::OptionsApi* | [**get_stock_options**](docs/OptionsApi.md#get_stock_options) | **GET** /quote/option/{stock}/list | getStockOptions
-*WebullApiClient::OptionsApi* | [**place_option_order**](docs/OptionsApi.md#place_option_order) | **POST** /v2/option/placeOrder/{account_id} | placeOptionOrder
-*WebullApiClient::OptionsApi* | [**replace_option_order**](docs/OptionsApi.md#replace_option_order) | **POST** /v2/option/replaceOrder/{account_id} | replaceOptionOrder
+*WebullApiClient::OptionsApi* | [**list_orders**](docs/OptionsApi.md#list_orders) | **POST** /v1/webull/order/list | listOrders
+*WebullApiClient::OptionsApi* | [**place_option_order**](docs/OptionsApi.md#place_option_order) | **POST** /v1/webull/order/optionPlace | placeOptionOrder
+*WebullApiClient::OptionsApi* | [**replace_option_order**](docs/OptionsApi.md#replace_option_order) | **POST** /v1/webull/order/optionReplace | replaceOptionOrder
 *WebullApiClient::OrderApi* | [**cancel_order**](docs/OrderApi.md#cancel_order) | **POST** /order/{account_id}/cancelStockOrder/ | cancelOrder
 *WebullApiClient::OrderApi* | [**cancel_otoco_order**](docs/OrderApi.md#cancel_otoco_order) | **POST** /v2/corder/stock/modify/{account_id} | cancelOtocoOrder
 *WebullApiClient::OrderApi* | [**check_otoco_order**](docs/OrderApi.md#check_otoco_order) | **POST** /v2/corder/stock/check/{account_id} | checkOtocoOrder
-*WebullApiClient::OrderApi* | [**get_orders**](docs/OrderApi.md#get_orders) | **GET** /v2/option/list | getOrders
+*WebullApiClient::OrderApi* | [**deprecated_get_orders**](docs/OrderApi.md#deprecated_get_orders) | **GET** /v2/option/list | getOrders
 *WebullApiClient::OrderApi* | [**is_tradeable**](docs/OrderApi.md#is_tradeable) | **GET** /ticker/broker/permissionV2 | isTradeable
+*WebullApiClient::OrderApi* | [**list_orders**](docs/OrderApi.md#list_orders) | **POST** /v1/webull/order/list | listOrders
 *WebullApiClient::OrderApi* | [**modify_order**](docs/OrderApi.md#modify_order) | **POST** /order/{account_id}/modifyStockOrder/{order_id} | modifyOrder
 *WebullApiClient::OrderApi* | [**place_order**](docs/OrderApi.md#place_order) | **POST** /order/{account_id}/placeStockOrder | placeOrder
 *WebullApiClient::OrderApi* | [**place_otoco_order**](docs/OrderApi.md#place_otoco_order) | **POST** /v2/corder/stock/place/{account_id} | placeOtocoOrder
@@ -122,6 +126,10 @@ Class | Method | HTTP request | Description
 *WebullApiClient::StocksApi* | [**get_ticker_chart**](docs/StocksApi.md#get_ticker_chart) | **GET** /quote/tickerChartDatas/v5/{stock} | getTickerChart
 *WebullApiClient::StocksApi* | [**screener**](docs/StocksApi.md#screener) | **GET** /wlas/screener/ng/query | screener
 *WebullApiClient::UserApi* | [**get_user**](docs/UserApi.md#get_user) | **GET** /user | getUser
+*WebullApiClient::WebApi* | [**cancel_option_order**](docs/WebApi.md#cancel_option_order) | **GET** /v2/option/cancelOrder | cancelOptionOrder
+*WebullApiClient::WebApi* | [**list_orders**](docs/WebApi.md#list_orders) | **POST** /v1/webull/order/list | listOrders
+*WebullApiClient::WebApi* | [**place_option_order**](docs/WebApi.md#place_option_order) | **POST** /v1/webull/order/optionPlace | placeOptionOrder
+*WebullApiClient::WebApi* | [**replace_option_order**](docs/WebApi.md#replace_option_order) | **POST** /v1/webull/order/optionReplace | replaceOptionOrder
 
 
 ## Documentation for Models
@@ -138,6 +146,8 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::AlertTickerWarning](docs/AlertTickerWarning.md)
  - [WebullApiClient::Attach](docs/Attach.md)
  - [WebullApiClient::Auth](docs/Auth.md)
+ - [WebullApiClient::DeprecatedOptionOrder](docs/DeprecatedOptionOrder.md)
+ - [WebullApiClient::DeprecatedPostOptionOrderRequest](docs/DeprecatedPostOptionOrderRequest.md)
  - [WebullApiClient::Direction](docs/Direction.md)
  - [WebullApiClient::ErrorBody](docs/ErrorBody.md)
  - [WebullApiClient::Execution](docs/Execution.md)
@@ -227,6 +237,7 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::PostLoginResponseSettings](docs/PostLoginResponseSettings.md)
  - [WebullApiClient::PostOptionCheckOrderRequest](docs/PostOptionCheckOrderRequest.md)
  - [WebullApiClient::PostOptionOrderRequest](docs/PostOptionOrderRequest.md)
+ - [WebullApiClient::PostOrderListRequest](docs/PostOrderListRequest.md)
  - [WebullApiClient::PostOrderResponse](docs/PostOrderResponse.md)
  - [WebullApiClient::PostOtocoOrderRequest](docs/PostOtocoOrderRequest.md)
  - [WebullApiClient::PostOtocoStockOrderRequest](docs/PostOtocoStockOrderRequest.md)

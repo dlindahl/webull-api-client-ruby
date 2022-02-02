@@ -7,8 +7,9 @@ All URIs are relative to *https://quoteapi.webull.com/api*
 | [**cancel_order**](OrderApi.md#cancel_order) | **POST** /order/{account_id}/cancelStockOrder/ | cancelOrder |
 | [**cancel_otoco_order**](OrderApi.md#cancel_otoco_order) | **POST** /v2/corder/stock/modify/{account_id} | cancelOtocoOrder |
 | [**check_otoco_order**](OrderApi.md#check_otoco_order) | **POST** /v2/corder/stock/check/{account_id} | checkOtocoOrder |
-| [**get_orders**](OrderApi.md#get_orders) | **GET** /v2/option/list | getOrders |
+| [**deprecated_get_orders**](OrderApi.md#deprecated_get_orders) | **GET** /v2/option/list | getOrders |
 | [**is_tradeable**](OrderApi.md#is_tradeable) | **GET** /ticker/broker/permissionV2 | isTradeable |
+| [**list_orders**](OrderApi.md#list_orders) | **POST** /v1/webull/order/list | listOrders |
 | [**modify_order**](OrderApi.md#modify_order) | **POST** /order/{account_id}/modifyStockOrder/{order_id} | modifyOrder |
 | [**place_order**](OrderApi.md#place_order) | **POST** /order/{account_id}/placeStockOrder | placeOrder |
 | [**place_otoco_order**](OrderApi.md#place_otoco_order) | **POST** /v2/corder/stock/place/{account_id} | placeOtocoOrder |
@@ -230,13 +231,13 @@ No authorization required
 - **Accept**: application/json
 
 
-## get_orders
+## deprecated_get_orders
 
-> Array&lt;Object&gt; get_orders(did, access_token, sec_account_id, opts)
+> Array&lt;Object&gt; deprecated_get_orders(did, access_token, sec_account_id, opts)
 
 getOrders
 
-Query for orders.
+DEPRECATED: Query for orders.
 
 ### Examples
 
@@ -261,28 +262,28 @@ opts = {
 
 begin
   # getOrders
-  result = api_instance.get_orders(did, access_token, sec_account_id, opts)
+  result = api_instance.deprecated_get_orders(did, access_token, sec_account_id, opts)
   p result
 rescue WebullApiClient::ApiError => e
-  puts "Error when calling OrderApi->get_orders: #{e}"
+  puts "Error when calling OrderApi->deprecated_get_orders: #{e}"
 end
 ```
 
-#### Using the get_orders_with_http_info variant
+#### Using the deprecated_get_orders_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Array&lt;Object&gt;, Integer, Hash)> get_orders_with_http_info(did, access_token, sec_account_id, opts)
+> <Array(Array&lt;Object&gt;, Integer, Hash)> deprecated_get_orders_with_http_info(did, access_token, sec_account_id, opts)
 
 ```ruby
 begin
   # getOrders
-  data, status_code, headers = api_instance.get_orders_with_http_info(did, access_token, sec_account_id, opts)
+  data, status_code, headers = api_instance.deprecated_get_orders_with_http_info(did, access_token, sec_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => Array&lt;Object&gt;
 rescue WebullApiClient::ApiError => e
-  puts "Error when calling OrderApi->get_orders_with_http_info: #{e}"
+  puts "Error when calling OrderApi->deprecated_get_orders_with_http_info: #{e}"
 end
 ```
 
@@ -381,6 +382,82 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_orders
+
+> Array&lt;Object&gt; list_orders(did, access_token, t_time, t_token, sec_account_id, opts)
+
+listOrders
+
+List all orders matching optional filter values.
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::OrderApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+t_time = 't_time_example' # String | Time
+t_token = 't_token_example' # String | Trade token
+sec_account_id = 'sec_account_id_example' # String | Account ID
+opts = {
+  post_order_list_request: WebullApiClient::PostOrderListRequest.new # PostOrderListRequest | 
+}
+
+begin
+  # listOrders
+  result = api_instance.list_orders(did, access_token, t_time, t_token, sec_account_id, opts)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OrderApi->list_orders: #{e}"
+end
+```
+
+#### Using the list_orders_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Array&lt;Object&gt;, Integer, Hash)> list_orders_with_http_info(did, access_token, t_time, t_token, sec_account_id, opts)
+
+```ruby
+begin
+  # listOrders
+  data, status_code, headers = api_instance.list_orders_with_http_info(did, access_token, t_time, t_token, sec_account_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Array&lt;Object&gt;
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OrderApi->list_orders_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **t_time** | **String** | Time |  |
+| **t_token** | **String** | Trade token |  |
+| **sec_account_id** | **String** | Account ID |  |
+| **post_order_list_request** | [**PostOrderListRequest**](PostOrderListRequest.md) |  | [optional] |
+
+### Return type
+
+**Array&lt;Object&gt;**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

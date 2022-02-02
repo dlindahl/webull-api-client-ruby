@@ -2756,11 +2756,86 @@ paths:
       summary: getAccountInfo
       tags:
         - accounts
+  "/v1/webull/order/list":
+    post:
+      deprecated: false
+      description: List all orders matching optional filter values.
+      operationId: listOrders
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: true
+          schema:
+            type: string
+        - description: Account ID
+          in: query
+          name: secAccountId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOrderListRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                $ref: "#/components/schemas/ListOrdersResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://ustrade.webullfinance.com/api/trading'
+      summary: listOrders
+      tags:
+        - order
+        - options
+        - web
   "/v2/option/list":
     get:
-      deprecated: false
-      description: Query for orders.
-      operationId: getOrders
+      deprecated: true
+      description: "DEPRECATED: Query for orders."
+      operationId: deprecatedGetOrders
       parameters:
         - in: header
           name: did
@@ -2838,7 +2913,7 @@ paths:
             application/json:
               schema:
                 type: array
-                $ref: "#/components/schemas/GetOrdersResponse"
+                $ref: "#/components/schemas/DeprecatedGetOrdersResponse"
           description: OK
         '401':
           content:
@@ -2863,7 +2938,7 @@ paths:
       summary: getOrders
       tags:
         - order
-  '/v2/option/placeOrder/{account_id}':
+  '/v1/webull/order/optionPlace':
     post:
       deprecated: false
       description: Place an option order
@@ -2873,6 +2948,85 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PostOptionOrderRequest'
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: secAccountId
+          in: query
+          name: secAccountId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://ustrade.webullfinance.com/api/trading'
+      summary: placeOptionOrder
+      tags:
+        - options
+        - web
+  '/v2/option/placeOrder/{account_id}':
+    post:
+      deprecated: true
+      description: "DEPRECATED: Place an option order"
+      operationId: deprecatedPlaceOptionOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeprecatedPostOptionOrderRequest'
       parameters:
         - in: header
           name: did
@@ -3026,6 +3180,7 @@ paths:
       summary: cancelOptionOrder
       tags:
         - options
+        - web
   '/v2/option/checkOrder/{account_id}':
     post:
       deprecated: false
@@ -3104,10 +3259,92 @@ paths:
       summary: checkOptionOrder
       tags:
         - options
-  '/v2/option/replaceOrder/{account_id}':
+  '/v1/webull/order/optionReplace':
     post:
       deprecated: false
       operationId: replaceOptionOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOptionOrderRequest'
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: Account ID
+          in: query
+          name: secAccountId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  orderId:
+                    type: string
+                  success:
+                    type: boolean
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://ustrade.webullfinance.com/api/trading'
+      summary: replaceOptionOrder
+      tags:
+        - options
+        - web
+  '/v2/option/replaceOrder/{account_id}':
+    post:
+      deprecated: true
+      operationId: deprecatedReplaceOptionOrder
       requestBody:
         content:
           application/json:
@@ -3178,7 +3415,7 @@ paths:
           description: Not Found
       servers:
         - url: 'https://tradeapi.webulltrade.com/api/trade'
-      summary: replaceOptionOrder
+      summary: replaceOptionOrderDeprecated
       tags:
         - options
   "/wlas/screener/ng/query":
@@ -4437,7 +4674,177 @@ components:
           type: array
         outsideRegularTradingHour:
           type: boolean
-    GetOrdersResponse:
+    ListOrdersResponse:
+      items:
+        # This *should* work but OpenAPI Generator does not build array
+        # responses from $refs correctly.
+        # $ref: '#/components/schemas/GetOrdersItem'
+        properties:
+          orderId:
+            type: string
+          comboId:
+            type: string
+          comboType:
+            type: string
+          comboTickerType:
+            type: string
+          optionStrategy:
+            type: string
+          outsideRegularTradingHour:
+            type: boolean
+          quantity:
+            type: string
+          filledQuantity:
+            type: string
+          action:
+            $ref: '#/components/schemas/OrderSide'
+            description: Order side
+          status:
+            type: string
+          statusName:
+            type: string
+          timeInForce:
+            type: string
+          orderType:
+            type: string
+          lmtPrice:
+            type: string
+          canModify:
+            type: boolean
+          canCancel:
+            type: boolean
+          items:
+            items:
+              properties:
+                brokerId:
+                  format: int32
+                  type: integer
+                orderId:
+                  format: int32
+                  type: integer
+                brokerOrderId:
+                  type: string
+                comboId:
+                  type: string
+                comboType:
+                  type: string
+                tickerType:
+                  type: string
+                ticker:
+                  properties:
+                    tickerId:
+                      format: int32
+                      type: integer
+                    exchangeId:
+                      format: int32
+                      type: integer
+                    type:
+                      format: int32
+                      type: integer
+                    secType:
+                      items:
+                        format: int32
+                        type: integer
+                      type: array
+                    regionId:
+                      format: int32
+                      type: integer
+                    regionCode:
+                      type: string
+                    currencyId:
+                      format: int32
+                      type: integer
+                    currencyCode:
+                      type: string
+                    name:
+                      type: string
+                    symbol:
+                      type: string
+                    disSymbol:
+                      type: string
+                    disExchangeCode:
+                      type: string
+                    exchangeCode:
+                      type: string
+                    listStatus:
+                      format: int32
+                      type: integer
+                    template:
+                      type: string
+                    derivativeSupport:
+                      type: number
+                    tinyName:
+                      type: string
+                  type: object
+                action:
+                  $ref: '#/components/schemas/OrderSide'
+                  description: Order side
+                orderType:
+                  $ref: '#/components/schemas/OrderType'
+                lmtPrice:
+                  type: string
+                totalQuantity:
+                  type: string
+                tickerId:
+                  format: int32
+                  type: integer
+                timeInForce:
+                  $ref: '#/components/schemas/TimeInForce'
+                optionType:
+                  $ref: '#/components/schemas/OptionType'
+                optionExpireDate:
+                  type: string
+                optionExercisePrice:
+                  type: string
+                filledQuantity:
+                  type: string
+                statusCode:
+                  type: string
+                statusName:
+                  type: string
+                symbol:
+                  type: string
+                optionCategory:
+                  type: string
+                optionContractMultiplier:
+                  type: string
+                optionContractDeliverable:
+                  type: string
+                createTime0:
+                  format: int64
+                  type: integer
+                createTime:
+                  type: string
+                updateTime:
+                  type: string
+                updateTime0:
+                  format: int64
+                  type: integer
+                canModify:
+                  type: boolean
+                canCancel:
+                  type: boolean
+                assetType:
+                  type: string
+                remainQuantity:
+                  type: string
+                optionCycle:
+                  type: integer
+                  format: int64
+                entrustType:
+                  type: string
+                placeAmount:
+                  type: string
+                outsideRegularTradingHour:
+                  type: boolean
+                amOrPm:
+                  type: string
+                expirationType:
+                  type: number
+              type: object
+            type: array
+      type: array
+    DeprecatedGetOrdersResponse:
       items:
         # This *should* work but OpenAPI Generator does not build array
         # responses from $refs correctly.
@@ -5484,6 +5891,24 @@ components:
       type: object
     OptionOrder:
       properties:
+        quantity:
+          format: int32
+          type: integer
+        action:
+          $ref: '#/components/schemas/OrderSide'
+          description: Order side
+        tickerId:
+          format: int32
+          type: integer
+        tickerType:
+          default: OPTION
+          type: string
+        orderId:
+          type: string
+      title: OptionOrder
+      type: object
+    DeprecatedOptionOrder:
+      properties:
         action:
           $ref: '#/components/schemas/OrderSide'
           description: Order side
@@ -5828,7 +6253,57 @@ components:
         uuid:
           example: 170a86831bd58e0a7ce33cf414aa467ed431ee69999
           type: string
+    PostOrderListRequest:
+      properties:
+        startTimeStr:
+          description: Start date for orders ("1970-01-01")
+          type: string
+        endTimeStr:
+          description: End date for orders
+          type: string
+        dateType:
+          description: Date type
+          type: string
+        pageSize:
+          description: Page size
+          type: number
+        lastCreateTime0:
+          description: Last create time
+          type: number
+        action:
+          description: Order action
+          type: string
+        status:
+          description: Status of order
+          type: string
+        tickerId:
+          description: Ticker ID of order
+          type: number
     PostOptionOrderRequest:
+      properties:
+        comboId:
+          type: string
+        orderId:
+          description: Required
+          type: string
+        lmtPrice:
+          type: number
+        stpPrice:
+          type: number
+        auxPrice:
+          type: number
+        orderType:
+          $ref: '#/components/schemas/OrderType'
+        timeInForce:
+          $ref: '#/components/schemas/TimeInForce'
+        orders:
+          items:
+            $ref: '#/components/schemas/OptionOrder'
+          type: array
+        serialId:
+          type: string
+      type: object
+    DeprecatedPostOptionOrderRequest:
       properties:
         auxPrice:
           type: number
@@ -5843,7 +6318,7 @@ components:
           $ref: '#/components/schemas/OrderType'
         orders:
           items:
-            $ref: '#/components/schemas/OptionOrder'
+            $ref: '#/components/schemas/DeprecatedOptionOrder'
           type: array
         serialId:
           type: string

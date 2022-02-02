@@ -20,6 +20,8 @@ docs/AlertsApi.md
 docs/Attach.md
 docs/Auth.md
 docs/AuthenticationApi.md
+docs/DeprecatedOptionOrder.md
+docs/DeprecatedPostOptionOrderRequest.md
 docs/Direction.md
 docs/DividendsApi.md
 docs/ErrorBody.md
@@ -113,6 +115,7 @@ docs/PostLoginResponseExtInfo.md
 docs/PostLoginResponseSettings.md
 docs/PostOptionCheckOrderRequest.md
 docs/PostOptionOrderRequest.md
+docs/PostOrderListRequest.md
 docs/PostOrderResponse.md
 docs/PostOtocoOrderRequest.md
 docs/PostOtocoStockOrderRequest.md
@@ -131,6 +134,7 @@ docs/Transfer.md
 docs/TransferDirection.md
 docs/Transfers.md
 docs/UserApi.md
+docs/WebApi.md
 git_push.sh
 lib/webull-api-client-ruby.rb
 lib/webull-api-client-ruby/api/accounts_api.rb
@@ -143,6 +147,7 @@ lib/webull-api-client-ruby/api/paper_api.rb
 lib/webull-api-client-ruby/api/quote_api.rb
 lib/webull-api-client-ruby/api/stocks_api.rb
 lib/webull-api-client-ruby/api/user_api.rb
+lib/webull-api-client-ruby/api/web_api.rb
 lib/webull-api-client-ruby/api_client.rb
 lib/webull-api-client-ruby/api_error.rb
 lib/webull-api-client-ruby/configuration.rb
@@ -159,6 +164,8 @@ lib/webull-api-client-ruby/models/alert_event_warning.rb
 lib/webull-api-client-ruby/models/alert_ticker_warning.rb
 lib/webull-api-client-ruby/models/attach.rb
 lib/webull-api-client-ruby/models/auth.rb
+lib/webull-api-client-ruby/models/deprecated_option_order.rb
+lib/webull-api-client-ruby/models/deprecated_post_option_order_request.rb
 lib/webull-api-client-ruby/models/direction.rb
 lib/webull-api-client-ruby/models/error_body.rb
 lib/webull-api-client-ruby/models/execution.rb
@@ -248,6 +255,7 @@ lib/webull-api-client-ruby/models/post_login_response_ext_info.rb
 lib/webull-api-client-ruby/models/post_login_response_settings.rb
 lib/webull-api-client-ruby/models/post_option_check_order_request.rb
 lib/webull-api-client-ruby/models/post_option_order_request.rb
+lib/webull-api-client-ruby/models/post_order_list_request.rb
 lib/webull-api-client-ruby/models/post_order_response.rb
 lib/webull-api-client-ruby/models/post_otoco_order_request.rb
 lib/webull-api-client-ruby/models/post_otoco_stock_order_request.rb
@@ -264,6 +272,7 @@ lib/webull-api-client-ruby/models/transfer.rb
 lib/webull-api-client-ruby/models/transfer_direction.rb
 lib/webull-api-client-ruby/models/transfers.rb
 lib/webull-api-client-ruby/version.rb
+spec/api/web_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
 spec/spec_helper.rb
