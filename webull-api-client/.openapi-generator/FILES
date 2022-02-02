@@ -272,7 +272,6 @@ lib/webull-api-client-ruby/models/transfer.rb
 lib/webull-api-client-ruby/models/transfer_direction.rb
 lib/webull-api-client-ruby/models/transfers.rb
 lib/webull-api-client-ruby/version.rb
-spec/api/web_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
 spec/spec_helper.rb

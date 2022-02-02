@@ -25,6 +25,7 @@ module WebullApiClient
     CANCELLED = "Cancelled".freeze
     FAILED = "Failed".freeze
     WORKING = "Working".freeze
+    PENDING = "Pending".freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string

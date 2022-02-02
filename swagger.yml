@@ -5966,6 +5966,7 @@ components:
         - Cancelled
         - Failed
         - Working
+        - Pending
       type: string
     OrderType:
       description: 'Order type, like: Limit (LMT), Stop (STP), and Stop Limit (STP LMT).'
