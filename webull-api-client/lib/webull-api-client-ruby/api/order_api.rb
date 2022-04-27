@@ -117,11 +117,11 @@ module WebullApiClient
     # @param t_token [String] Trade token
     # @param t_time [String] Time
     # @param account_id [String] Account ID
-    # @param inline_object [InlineObject] 
+    # @param inline_object1 [InlineObject1] 
     # @param [Hash] opts the optional parameters
     # @return [Array<Object>]
-    def cancel_otoco_order(did, access_token, t_token, t_time, account_id, inline_object, opts = {})
-      data, _status_code, _headers = cancel_otoco_order_with_http_info(did, access_token, t_token, t_time, account_id, inline_object, opts)
+    def cancel_otoco_order(did, access_token, t_token, t_time, account_id, inline_object1, opts = {})
+      data, _status_code, _headers = cancel_otoco_order_with_http_info(did, access_token, t_token, t_time, account_id, inline_object1, opts)
       data
     end
 
@@ -132,10 +132,10 @@ module WebullApiClient
     # @param t_token [String] Trade token
     # @param t_time [String] Time
     # @param account_id [String] Account ID
-    # @param inline_object [InlineObject] 
+    # @param inline_object1 [InlineObject1] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<Object>, Integer, Hash)>] Array<Object> data, response status code and response headers
-    def cancel_otoco_order_with_http_info(did, access_token, t_token, t_time, account_id, inline_object, opts = {})
+    def cancel_otoco_order_with_http_info(did, access_token, t_token, t_time, account_id, inline_object1, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OrderApi.cancel_otoco_order ...'
       end
@@ -159,9 +159,9 @@ module WebullApiClient
       if @api_client.config.client_side_validation && account_id.nil?
         fail ArgumentError, "Missing the required parameter 'account_id' when calling OrderApi.cancel_otoco_order"
       end
-      # verify the required parameter 'inline_object' is set
-      if @api_client.config.client_side_validation && inline_object.nil?
-        fail ArgumentError, "Missing the required parameter 'inline_object' when calling OrderApi.cancel_otoco_order"
+      # verify the required parameter 'inline_object1' is set
+      if @api_client.config.client_side_validation && inline_object1.nil?
+        fail ArgumentError, "Missing the required parameter 'inline_object1' when calling OrderApi.cancel_otoco_order"
       end
       # resource path
       local_var_path = '/v2/corder/stock/modify/{account_id}'.sub('{' + 'account_id' + '}', CGI.escape(account_id.to_s))
@@ -184,7 +184,7 @@ module WebullApiClient
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(inline_object)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(inline_object1)
 
       # return_type
       return_type = opts[:debug_return_type] || 'Array<Object>'

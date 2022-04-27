@@ -410,5 +410,89 @@ module WebullApiClient
       end
       return data, status_code, headers
     end
+
+    # saveDraw
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param ticker_id [Integer] The Ticker ID to markup
+    # @param inline_object [InlineObject] 
+    # @param [Hash] opts the optional parameters
+    # @return [Object]
+    def save_draw(did, access_token, ticker_id, inline_object, opts = {})
+      data, _status_code, _headers = save_draw_with_http_info(did, access_token, ticker_id, inline_object, opts)
+      data
+    end
+
+    # saveDraw
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param ticker_id [Integer] The Ticker ID to markup
+    # @param inline_object [InlineObject] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
+    def save_draw_with_http_info(did, access_token, ticker_id, inline_object, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: WebApi.save_draw ...'
+      end
+      # verify the required parameter 'did' is set
+      if @api_client.config.client_side_validation && did.nil?
+        fail ArgumentError, "Missing the required parameter 'did' when calling WebApi.save_draw"
+      end
+      # verify the required parameter 'access_token' is set
+      if @api_client.config.client_side_validation && access_token.nil?
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling WebApi.save_draw"
+      end
+      # verify the required parameter 'ticker_id' is set
+      if @api_client.config.client_side_validation && ticker_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ticker_id' when calling WebApi.save_draw"
+      end
+      # verify the required parameter 'inline_object' is set
+      if @api_client.config.client_side_validation && inline_object.nil?
+        fail ArgumentError, "Missing the required parameter 'inline_object' when calling WebApi.save_draw"
+      end
+      # resource path
+      local_var_path = '/draw/quote/charts/saveDraw'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'tickerId'] = ticker_id
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'did'] = did
+      header_params[:'access_token'] = access_token
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(inline_object)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Object'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"WebApi.save_draw",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: WebApi#save_draw\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end

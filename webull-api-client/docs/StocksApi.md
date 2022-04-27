@@ -13,6 +13,7 @@ All URIs are relative to *https://quoteapi.webull.com/api*
 | [**get_stock_news**](StocksApi.md#get_stock_news) | **GET** /information/news/v5/tickerNews/{stock} | getStockNews |
 | [**get_stocks**](StocksApi.md#get_stocks) | **GET** /search/pc/tickers | getStocks |
 | [**get_ticker_chart**](StocksApi.md#get_ticker_chart) | **GET** /quote/tickerChartDatas/v5/{stock} | getTickerChart |
+| [**save_draw**](StocksApi.md#save_draw) | **POST** /draw/quote/charts/saveDraw | saveDraw |
 | [**screener**](StocksApi.md#screener) | **GET** /wlas/screener/ng/query | screener |
 
 
@@ -663,6 +664,74 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## save_draw
+
+> Object save_draw(did, access_token, ticker_id, inline_object)
+
+saveDraw
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::StocksApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+ticker_id = 56 # Integer | The Ticker ID to markup
+inline_object = WebullApiClient::InlineObject.new # InlineObject | 
+
+begin
+  # saveDraw
+  result = api_instance.save_draw(did, access_token, ticker_id, inline_object)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling StocksApi->save_draw: #{e}"
+end
+```
+
+#### Using the save_draw_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> save_draw_with_http_info(did, access_token, ticker_id, inline_object)
+
+```ruby
+begin
+  # saveDraw
+  data, status_code, headers = api_instance.save_draw_with_http_info(did, access_token, ticker_id, inline_object)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling StocksApi->save_draw_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **ticker_id** | **Integer** | The Ticker ID to markup | [default to 913243251] |
+| **inline_object** | [**InlineObject**](InlineObject.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

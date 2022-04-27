@@ -1255,6 +1255,7 @@ paths:
             type: integer
             default: 800
         - description: The selected day of chart date to request
+          example: 1648166221
           in: query
           name: timestamp
           required: false
@@ -1296,6 +1297,148 @@ paths:
         - url: 'https://quotes-gw.webullfintech.com/api'
       summary: getChartData
       tags:
+        - stocks
+  "/draw/quote/charts/saveDraw":
+    post:
+      deprecated: false
+      operationId: saveDraw
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: The Ticker ID to markup
+          in: query
+          name: tickerId
+          required: true
+          schema:
+            type: integer
+            format: int32
+            default: 913243251
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                config:
+                  description: A JSON-encoded string the designated properties
+                  type: object
+                  properties:
+                    id:
+                      description: UUID
+                      type: string
+                    lastModifyTime:
+                      type: integer
+                      format: int32
+                    type:
+                      type: string
+                      default: horizontal
+                      enum:
+                        - horizontal
+                        - vertical
+                    style:
+                      type: string
+                      enum:
+                        - dotted1
+                        - dotted2
+                        - solid
+                    lineWidth:
+                      type: string
+                      enum:
+                        - width1
+                        - width2
+                        - width3
+                        - width4
+                    lineColor:
+                      type: integer
+                      enum:
+                        - 4  # red 1
+                        - 11 # red 2
+                        - 18 # red 3
+                        - 25 # red 4
+                        - 32 # red 5
+                        - 6  # yellow 1
+                        - 13 # yellow 2
+                        - 20 # yellow 2
+                        - 27 # yellow 3
+                        - 34 # yellow 4
+                        - 7  # green 1
+                        - 14 # green 2
+                        - 21 # green 3
+                        - 28 # green 4
+                        - 35 # green 5
+                    points:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          x:
+                            type: integer
+                            format: int32
+                          y:
+                            type: integer
+                            format: int32
+                    interval:
+                      type: string
+                      enum:
+                        - m5
+                        - m10
+                        - m15
+                        - m30
+                        - h1
+                        - h2
+                        - h4
+                        - d1
+                        - w1
+                tickerId:
+                  type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://quotes-gw.webullfintech.com/api'
+      summary: saveDraw
+      tags:
+        - web
         - stocks
   "/quote/charts/kdata/latest":
     get:

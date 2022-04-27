@@ -550,6 +550,12 @@ module WebullApiClient
           description: "No description provided",
           }
         ],
+        "StocksApi.save_draw": [
+          {
+          url: "https://quotes-gw.webullfintech.com/api",
+          description: "No description provided",
+          }
+        ],
         "StocksApi.screener": [
           {
           url: "https://userapi.webullbroker.com/api",
@@ -583,6 +589,12 @@ module WebullApiClient
         "WebApi.replace_option_order": [
           {
           url: "https://ustrade.webullfinance.com/api/trading",
+          description: "No description provided",
+          }
+        ],
+        "WebApi.save_draw": [
+          {
+          url: "https://quotes-gw.webullfintech.com/api",
           description: "No description provided",
           }
         ],

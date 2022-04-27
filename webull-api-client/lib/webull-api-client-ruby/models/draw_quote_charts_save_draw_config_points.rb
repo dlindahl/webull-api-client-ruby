@@ -14,16 +14,16 @@ require 'date'
 require 'time'
 
 module WebullApiClient
-  class InlineObject
-    attr_accessor :config
+  class DrawQuoteChartsSaveDrawConfigPoints
+    attr_accessor :x
 
-    attr_accessor :ticker_id
+    attr_accessor :y
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'config' => :'config',
-        :'ticker_id' => :'tickerId'
+        :'x' => :'x',
+        :'y' => :'y'
       }
     end
 
@@ -35,8 +35,8 @@ module WebullApiClient
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'config' => :'DrawQuoteChartsSaveDrawConfig',
-        :'ticker_id' => :'String'
+        :'x' => :'Integer',
+        :'y' => :'Integer'
       }
     end
 
@@ -50,23 +50,23 @@ module WebullApiClient
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::InlineObject` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `WebullApiClient::DrawQuoteChartsSaveDrawConfigPoints` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::InlineObject`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `WebullApiClient::DrawQuoteChartsSaveDrawConfigPoints`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'config')
-        self.config = attributes[:'config']
+      if attributes.key?(:'x')
+        self.x = attributes[:'x']
       end
 
-      if attributes.key?(:'ticker_id')
-        self.ticker_id = attributes[:'ticker_id']
+      if attributes.key?(:'y')
+        self.y = attributes[:'y']
       end
     end
 
@@ -88,8 +88,8 @@ module WebullApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          config == o.config &&
-          ticker_id == o.ticker_id
+          x == o.x &&
+          y == o.y
     end
 
     # @see the `==` method
@@ -101,7 +101,7 @@ module WebullApiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [config, ticker_id].hash
+      [x, y].hash
     end
 
     # Builds the object from hash

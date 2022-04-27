@@ -124,12 +124,14 @@ Class | Method | HTTP request | Description
 *WebullApiClient::StocksApi* | [**get_stock_news**](docs/StocksApi.md#get_stock_news) | **GET** /information/news/v5/tickerNews/{stock} | getStockNews
 *WebullApiClient::StocksApi* | [**get_stocks**](docs/StocksApi.md#get_stocks) | **GET** /search/pc/tickers | getStocks
 *WebullApiClient::StocksApi* | [**get_ticker_chart**](docs/StocksApi.md#get_ticker_chart) | **GET** /quote/tickerChartDatas/v5/{stock} | getTickerChart
+*WebullApiClient::StocksApi* | [**save_draw**](docs/StocksApi.md#save_draw) | **POST** /draw/quote/charts/saveDraw | saveDraw
 *WebullApiClient::StocksApi* | [**screener**](docs/StocksApi.md#screener) | **GET** /wlas/screener/ng/query | screener
 *WebullApiClient::UserApi* | [**get_user**](docs/UserApi.md#get_user) | **GET** /user | getUser
 *WebullApiClient::WebApi* | [**cancel_option_order**](docs/WebApi.md#cancel_option_order) | **GET** /v2/option/cancelOrder | cancelOptionOrder
 *WebullApiClient::WebApi* | [**list_orders**](docs/WebApi.md#list_orders) | **POST** /v1/webull/order/list | listOrders
 *WebullApiClient::WebApi* | [**place_option_order**](docs/WebApi.md#place_option_order) | **POST** /v1/webull/order/optionPlace | placeOptionOrder
 *WebullApiClient::WebApi* | [**replace_option_order**](docs/WebApi.md#replace_option_order) | **POST** /v1/webull/order/optionReplace | replaceOptionOrder
+*WebullApiClient::WebApi* | [**save_draw**](docs/WebApi.md#save_draw) | **POST** /draw/quote/charts/saveDraw | saveDraw
 
 
 ## Documentation for Models
@@ -149,6 +151,8 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::DeprecatedOptionOrder](docs/DeprecatedOptionOrder.md)
  - [WebullApiClient::DeprecatedPostOptionOrderRequest](docs/DeprecatedPostOptionOrderRequest.md)
  - [WebullApiClient::Direction](docs/Direction.md)
+ - [WebullApiClient::DrawQuoteChartsSaveDrawConfig](docs/DrawQuoteChartsSaveDrawConfig.md)
+ - [WebullApiClient::DrawQuoteChartsSaveDrawConfigPoints](docs/DrawQuoteChartsSaveDrawConfigPoints.md)
  - [WebullApiClient::ErrorBody](docs/ErrorBody.md)
  - [WebullApiClient::Execution](docs/Execution.md)
  - [WebullApiClient::ExecutionType](docs/ExecutionType.md)
@@ -214,6 +218,7 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::GetTransfersRequest](docs/GetTransfersRequest.md)
  - [WebullApiClient::GetUserDetailsResponse](docs/GetUserDetailsResponse.md)
  - [WebullApiClient::InlineObject](docs/InlineObject.md)
+ - [WebullApiClient::InlineObject1](docs/InlineObject1.md)
  - [WebullApiClient::Leg](docs/Leg.md)
  - [WebullApiClient::LookupStockResponse](docs/LookupStockResponse.md)
  - [WebullApiClient::LookupTickerResponse](docs/LookupTickerResponse.md)

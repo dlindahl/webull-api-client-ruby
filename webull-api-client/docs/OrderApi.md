@@ -89,7 +89,7 @@ No authorization required
 
 ## cancel_otoco_order
 
-> Array&lt;Object&gt; cancel_otoco_order(did, access_token, t_token, t_time, account_id, inline_object)
+> Array&lt;Object&gt; cancel_otoco_order(did, access_token, t_token, t_time, account_id, inline_object1)
 
 cancelOtocoOrder
 
@@ -107,11 +107,11 @@ access_token = 'access_token_example' # String | Access token
 t_token = 't_token_example' # String | Trade token
 t_time = 't_time_example' # String | Time
 account_id = 'account_id_example' # String | Account ID
-inline_object = WebullApiClient::InlineObject.new # InlineObject | 
+inline_object1 = WebullApiClient::InlineObject1.new # InlineObject1 | 
 
 begin
   # cancelOtocoOrder
-  result = api_instance.cancel_otoco_order(did, access_token, t_token, t_time, account_id, inline_object)
+  result = api_instance.cancel_otoco_order(did, access_token, t_token, t_time, account_id, inline_object1)
   p result
 rescue WebullApiClient::ApiError => e
   puts "Error when calling OrderApi->cancel_otoco_order: #{e}"
@@ -122,12 +122,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(Array&lt;Object&gt;, Integer, Hash)> cancel_otoco_order_with_http_info(did, access_token, t_token, t_time, account_id, inline_object)
+> <Array(Array&lt;Object&gt;, Integer, Hash)> cancel_otoco_order_with_http_info(did, access_token, t_token, t_time, account_id, inline_object1)
 
 ```ruby
 begin
   # cancelOtocoOrder
-  data, status_code, headers = api_instance.cancel_otoco_order_with_http_info(did, access_token, t_token, t_time, account_id, inline_object)
+  data, status_code, headers = api_instance.cancel_otoco_order_with_http_info(did, access_token, t_token, t_time, account_id, inline_object1)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => Array&lt;Object&gt;
@@ -145,7 +145,7 @@ end
 | **t_token** | **String** | Trade token |  |
 | **t_time** | **String** | Time |  |
 | **account_id** | **String** | Account ID |  |
-| **inline_object** | [**InlineObject**](InlineObject.md) |  |  |
+| **inline_object1** | [**InlineObject1**](InlineObject1.md) |  |  |
 
 ### Return type
 

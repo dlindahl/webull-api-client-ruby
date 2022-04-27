@@ -24,6 +24,8 @@ docs/DeprecatedOptionOrder.md
 docs/DeprecatedPostOptionOrderRequest.md
 docs/Direction.md
 docs/DividendsApi.md
+docs/DrawQuoteChartsSaveDrawConfig.md
+docs/DrawQuoteChartsSaveDrawConfigPoints.md
 docs/ErrorBody.md
 docs/Execution.md
 docs/ExecutionType.md
@@ -89,6 +91,7 @@ docs/GetTickerChartResponseDates.md
 docs/GetTransfersRequest.md
 docs/GetUserDetailsResponse.md
 docs/InlineObject.md
+docs/InlineObject1.md
 docs/Leg.md
 docs/LookupStockResponse.md
 docs/LookupTickerResponse.md
@@ -167,6 +170,8 @@ lib/webull-api-client-ruby/models/auth.rb
 lib/webull-api-client-ruby/models/deprecated_option_order.rb
 lib/webull-api-client-ruby/models/deprecated_post_option_order_request.rb
 lib/webull-api-client-ruby/models/direction.rb
+lib/webull-api-client-ruby/models/draw_quote_charts_save_draw_config.rb
+lib/webull-api-client-ruby/models/draw_quote_charts_save_draw_config_points.rb
 lib/webull-api-client-ruby/models/error_body.rb
 lib/webull-api-client-ruby/models/execution.rb
 lib/webull-api-client-ruby/models/execution_type.rb
@@ -232,6 +237,7 @@ lib/webull-api-client-ruby/models/get_ticker_chart_response_dates.rb
 lib/webull-api-client-ruby/models/get_transfers_request.rb
 lib/webull-api-client-ruby/models/get_user_details_response.rb
 lib/webull-api-client-ruby/models/inline_object.rb
+lib/webull-api-client-ruby/models/inline_object1.rb
 lib/webull-api-client-ruby/models/leg.rb
 lib/webull-api-client-ruby/models/lookup_stock_response.rb
 lib/webull-api-client-ruby/models/lookup_ticker_response.rb

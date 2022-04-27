@@ -8,6 +8,7 @@ All URIs are relative to *https://quoteapi.webull.com/api*
 | [**list_orders**](WebApi.md#list_orders) | **POST** /v1/webull/order/list | listOrders |
 | [**place_option_order**](WebApi.md#place_option_order) | **POST** /v1/webull/order/optionPlace | placeOptionOrder |
 | [**replace_option_order**](WebApi.md#replace_option_order) | **POST** /v1/webull/order/optionReplace | replaceOptionOrder |
+| [**save_draw**](WebApi.md#save_draw) | **POST** /draw/quote/charts/saveDraw | saveDraw |
 
 
 ## cancel_option_order
@@ -297,6 +298,74 @@ end
 | **t_time** | **String** | Time |  |
 | **sec_account_id** | **String** | Account ID |  |
 | **post_option_order_request** | [**PostOptionOrderRequest**](PostOptionOrderRequest.md) |  | [optional] |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## save_draw
+
+> Object save_draw(did, access_token, ticker_id, inline_object)
+
+saveDraw
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::WebApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+ticker_id = 56 # Integer | The Ticker ID to markup
+inline_object = WebullApiClient::InlineObject.new # InlineObject | 
+
+begin
+  # saveDraw
+  result = api_instance.save_draw(did, access_token, ticker_id, inline_object)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling WebApi->save_draw: #{e}"
+end
+```
+
+#### Using the save_draw_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> save_draw_with_http_info(did, access_token, ticker_id, inline_object)
+
+```ruby
+begin
+  # saveDraw
+  data, status_code, headers = api_instance.save_draw_with_http_info(did, access_token, ticker_id, inline_object)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling WebApi->save_draw_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **ticker_id** | **Integer** | The Ticker ID to markup | [default to 913243251] |
+| **inline_object** | [**InlineObject**](InlineObject.md) |  |  |
 
 ### Return type
 
