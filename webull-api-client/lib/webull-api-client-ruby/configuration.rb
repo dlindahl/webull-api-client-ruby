@@ -376,6 +376,12 @@ module WebullApiClient
           description: "No description provided",
           }
         ],
+        "OptionsApi.get_options_list": [
+          {
+          url: "https://quotes-gw.webullfintech.com/api",
+          description: "No description provided",
+          }
+        ],
         "OptionsApi.get_stock_options": [
           {
           url: "https://quoteapi.webullbroker.com/api",
@@ -571,6 +577,12 @@ module WebullApiClient
         "WebApi.cancel_option_order": [
           {
           url: "https://ustrade.webullbroker.com/api/trade",
+          description: "No description provided",
+          }
+        ],
+        "WebApi.get_options_list": [
+          {
+          url: "https://quotes-gw.webullfintech.com/api",
           description: "No description provided",
           }
         ],

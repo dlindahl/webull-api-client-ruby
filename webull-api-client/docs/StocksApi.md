@@ -113,7 +113,7 @@ count = 56 # Integer | The number of bars to return
 opts = {
   ver: 'ver_example', # String | null
   device_type: 'device_type_example', # String | null
-  timestamp: 8.14 # Float | The selected day of chart date to request
+  timestamp: 1648166221 # Float | The selected day of chart date to request
 }
 
 begin

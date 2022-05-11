@@ -1557,9 +1557,9 @@ paths:
           name: tickerId
           required: true
           schema:
+            example: 913243251
             type: integer
             format: int32
-            default: 913243251
         - description: derivativeIds
           in: query
           name: derivativeIds
@@ -1602,9 +1602,89 @@ paths:
       summary: getOptionQuotes
       tags:
         - options
+  '/quote/option/strategy/list':
+    post:
+      deprecated: false
+      operationId: getOptionsList
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: device-type
+          schema:
+            type: string
+            default: Web
+        - in: header
+          name: hl
+          schema:
+            type: string
+            default: en
+        - in: header
+          name: os
+          schema:
+            type: string
+            default: web
+        - in: header
+          name: osv
+          schema:
+            type: string
+            default: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetOptionsListRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetOptionsListResponse"
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://quotes-gw.webullfintech.com/api'
+      summary: getOptionsList
+      tags:
+        - options
+        - web
   '/quote/option/{stock}/list':
     get:
-      deprecated: false
+      deprecated: true
       operationId: getStockOptions
       parameters:
         - in: header
@@ -4645,6 +4725,312 @@ components:
           description: tickerId
           format: int32
           type: integer
+    GetOptionsListRequest:
+      properties:
+        count:
+          description: Number of strikes to return. -1 to return all of them.
+          default: -1
+          example: 6
+          type: number
+        direction:
+          default: all
+          example: "all"
+          enum:
+            - all
+            - calls
+            - puts
+          type: string
+        expireCycle:
+          example: 3, 2, 4
+          items:
+            type: number
+          type: array
+        quoteMultiplier:
+          default: 100
+          example: 100
+          format: int32
+          type: integer
+        tickerId:
+          example: 913256135
+          format: int32
+          type: integer
+        type:
+          default: 0
+          example: 0
+          type: number
+    GetOptionsListResponse:
+      properties:
+        askList:
+          items:
+            type: object
+            properties:
+              price:
+                example: "123.45"
+                type: string
+              volume:
+                example: "789"
+                type: string
+          type: array
+        bidList:
+          items:
+            type: object
+            properties:
+              price:
+                example: "123.45"
+                type: string
+              volume:
+                example: "789"
+                type: string
+          type: array
+        change:
+          example: "-1.23"
+          type: string
+        changeRatio:
+          example: "-0.0123"
+          type: string
+        close:
+          example: "123.45"
+          type: string
+        disExchangeCode:
+          example: "NASDAQ"
+          type: string
+        disSymbol:
+          example: "AAPL"
+          type: string
+        exchangeCode:
+          example: "NSQ"
+          type: string
+        expireDateList:
+          items:
+            type: object
+            properties:
+              data:
+                items:
+                  type: object
+                  properties:
+                    activeLevel:
+                      example: 5
+                      type: number
+                    askList:
+                      items:
+                        type: object
+                        properties:
+                          price:
+                            example: "12.45"
+                            type: string
+                          volume:
+                            example: "789"
+                            type: string
+                          quoteEx:
+                            example: "AMX0"
+                            type: string
+                      type: array
+                    belongTickerId:
+                      description: "The ticker ID of the stock"
+                      example: 913256135
+                      type: integer
+                      format: int32
+                    bidList:
+                      items:
+                        type: object
+                        properties:
+                          price:
+                            example: "12.45"
+                            type: string
+                          volume:
+                            example: "789"
+                            type: string
+                          quoteEx:
+                            example: "XPH0"
+                            type: string
+                      type: array
+                    change:
+                      example: "-2.75"
+                      type: string
+                    changeRatio:
+                      example: "-0.1871"
+                      type: string
+                    close:
+                      example: "11.95"
+                      type: string
+                    currencyId:
+                      example: 247
+                      format: int32
+                      type: integer
+                    cycle:
+                      example: 2
+                      type: number
+                    delta:
+                      example: "0.8082"
+                      type: string
+                    derivativeStatus:
+                      example: 0
+                      type: integer
+                    direction:
+                      enum:
+                        - call
+                        - put
+                      type: string
+                    exchangeId:
+                      example: 189
+                      format: int32
+                      type: integer
+                    executionType:
+                      example: "A"
+                      type: string
+                    expireDate:
+                      example: "2022-0101"
+                      format: date
+                      type: string
+                    gamma:
+                      example: "0.0208"
+                      type: string
+                    high:
+                      example: "12.34"
+                      type: string
+                    impVol:
+                      example: "0.8807"
+                      type: string
+                    latestPriceVol:
+                      example: "1"
+                      type: string
+                    low:
+                      example: "11.22"
+                      type: string
+                    open:
+                      example: "12.90"
+                      type: string
+                    openIntChange:
+                      example: 174
+                      format: int32
+                      type: integer
+                    openInterest:
+                      example: 180
+                      format: int32
+                      type: integer
+                    preClose:
+                      example: "14.70"
+                      type: string
+                    quoteLotSize:
+                      example: 100
+                      format: int32
+                      type: integer
+                    quoteMultiplier:
+                      example: 100
+                      format: int32
+                      type: integer
+                    regionId:
+                      example: 6
+                      type: integer
+                    rho:
+                      example: "0.0088"
+                      type: string
+                    strikePrice:
+                      example: "149"
+                      type: string
+                    symbol:
+                      example: "AAPL220429C00149000"
+                      type: string
+                    theta:
+                      example: "-0.5725"
+                      type: string
+                    tickerId:
+                      example: 1032239913
+                      format: int32
+                      type: integer
+                    unSymbol:
+                      example: "AAPL"
+                      type: string
+                    vega:
+                      example: "0.0406"
+                      type: string
+                    volume:
+                      example: "20"
+                      type: string
+                    weekly:
+                      example: 1
+                      type: number
+                type: array
+              from:
+                type: object
+                properties:
+                  date:
+                    example: "2022-01-01"
+                    format: date
+                    type: string
+                  days:
+                    description: "Days until expiration"
+                    example: 3
+                    type: integer
+                  quoteLotSize:
+                    example: 100
+                    type: integer
+                  quoteMultiplier:
+                    example: 100
+                    type: integer
+                  unSymbol:
+                    example: "AAPL"
+                    type: string
+                  weekly:
+                    example: 1
+                    type: integer
+              groups:
+                items:
+                  type: object
+                  properties:
+                    call:
+                      items:
+                        type: object
+                        properties:
+                          gravity:
+                            example: 1
+                            type: integer
+                          option:
+                            example: 1031392307
+                            type: integer
+                            format: int32
+                          side:
+                            enum:
+                              - buy
+                            type: string
+                      type: array
+                type: array
+              high:
+                example: "162.21"
+                type: string
+              low:
+                example: "158.07"
+                type: string
+              name:
+                example: "Apple Inc"
+                type: string
+              ntvSize:
+                example: 0
+                type: number
+              open:
+                example: "162.17"
+                type: string
+              preClose:
+                example: "162.88"
+                type: string
+              template:
+                enum:
+                  - stock
+                type: string
+              tickerId:
+                example: 913256135
+                format: int32
+                type: integer
+              tickerType:
+                example: 2
+                type: number
+              vol1y:
+                example: "0.2009"
+                type: string
+              volume:
+                example: "41340743"
+                type: string
+          type: array
     GetOptionsQuotesResponse:
       properties:
         data:

@@ -95,6 +95,7 @@ Class | Method | HTTP request | Description
 *WebullApiClient::OptionsApi* | [**deprecated_replace_option_order**](docs/OptionsApi.md#deprecated_replace_option_order) | **POST** /v2/option/replaceOrder/{account_id} | replaceOptionOrderDeprecated
 *WebullApiClient::OptionsApi* | [**get_batch_stock_options**](docs/OptionsApi.md#get_batch_stock_options) | **GET** /quote/option/quotes/queryBatch | getBatchStockOptions
 *WebullApiClient::OptionsApi* | [**get_option_quotes**](docs/OptionsApi.md#get_option_quotes) | **GET** /quote/option/query/list | getOptionQuotes
+*WebullApiClient::OptionsApi* | [**get_options_list**](docs/OptionsApi.md#get_options_list) | **POST** /quote/option/strategy/list | getOptionsList
 *WebullApiClient::OptionsApi* | [**get_stock_options**](docs/OptionsApi.md#get_stock_options) | **GET** /quote/option/{stock}/list | getStockOptions
 *WebullApiClient::OptionsApi* | [**list_orders**](docs/OptionsApi.md#list_orders) | **POST** /v1/webull/order/list | listOrders
 *WebullApiClient::OptionsApi* | [**place_option_order**](docs/OptionsApi.md#place_option_order) | **POST** /v1/webull/order/optionPlace | placeOptionOrder
@@ -128,6 +129,7 @@ Class | Method | HTTP request | Description
 *WebullApiClient::StocksApi* | [**screener**](docs/StocksApi.md#screener) | **GET** /wlas/screener/ng/query | screener
 *WebullApiClient::UserApi* | [**get_user**](docs/UserApi.md#get_user) | **GET** /user | getUser
 *WebullApiClient::WebApi* | [**cancel_option_order**](docs/WebApi.md#cancel_option_order) | **GET** /v2/option/cancelOrder | cancelOptionOrder
+*WebullApiClient::WebApi* | [**get_options_list**](docs/WebApi.md#get_options_list) | **POST** /quote/option/strategy/list | getOptionsList
 *WebullApiClient::WebApi* | [**list_orders**](docs/WebApi.md#list_orders) | **POST** /v1/webull/order/list | listOrders
 *WebullApiClient::WebApi* | [**place_option_order**](docs/WebApi.md#place_option_order) | **POST** /v1/webull/order/optionPlace | placeOptionOrder
 *WebullApiClient::WebApi* | [**replace_option_order**](docs/WebApi.md#replace_option_order) | **POST** /v1/webull/order/optionReplace | replaceOptionOrder
@@ -192,6 +194,16 @@ Class | Method | HTTP request | Description
  - [WebullApiClient::GetNewsResponse](docs/GetNewsResponse.md)
  - [WebullApiClient::GetNewsResponseItems](docs/GetNewsResponseItems.md)
  - [WebullApiClient::GetOptionQuotesRequest](docs/GetOptionQuotesRequest.md)
+ - [WebullApiClient::GetOptionsListRequest](docs/GetOptionsListRequest.md)
+ - [WebullApiClient::GetOptionsListResponse](docs/GetOptionsListResponse.md)
+ - [WebullApiClient::GetOptionsListResponseAskList](docs/GetOptionsListResponseAskList.md)
+ - [WebullApiClient::GetOptionsListResponseAskList1](docs/GetOptionsListResponseAskList1.md)
+ - [WebullApiClient::GetOptionsListResponseBidList](docs/GetOptionsListResponseBidList.md)
+ - [WebullApiClient::GetOptionsListResponseCall](docs/GetOptionsListResponseCall.md)
+ - [WebullApiClient::GetOptionsListResponseData](docs/GetOptionsListResponseData.md)
+ - [WebullApiClient::GetOptionsListResponseExpireDateList](docs/GetOptionsListResponseExpireDateList.md)
+ - [WebullApiClient::GetOptionsListResponseFrom](docs/GetOptionsListResponseFrom.md)
+ - [WebullApiClient::GetOptionsListResponseGroups](docs/GetOptionsListResponseGroups.md)
  - [WebullApiClient::GetOptionsQuotesResponse](docs/GetOptionsQuotesResponse.md)
  - [WebullApiClient::GetOrdersItem](docs/GetOrdersItem.md)
  - [WebullApiClient::GetOrdersItemOrders](docs/GetOrdersItemOrders.md)

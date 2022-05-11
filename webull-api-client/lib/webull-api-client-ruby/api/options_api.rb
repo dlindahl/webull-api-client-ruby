@@ -563,6 +563,91 @@ module WebullApiClient
       return data, status_code, headers
     end
 
+    # getOptionsList
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :device_type  (default to 'Web')
+    # @option opts [String] :hl  (default to 'en')
+    # @option opts [String] :os  (default to 'web')
+    # @option opts [String] :osv  (default to 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36')
+    # @option opts [GetOptionsListRequest] :get_options_list_request 
+    # @return [GetOptionsListResponse]
+    def get_options_list(did, access_token, opts = {})
+      data, _status_code, _headers = get_options_list_with_http_info(did, access_token, opts)
+      data
+    end
+
+    # getOptionsList
+    # @param did [String] Device ID
+    # @param access_token [String] Access token
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :device_type 
+    # @option opts [String] :hl 
+    # @option opts [String] :os 
+    # @option opts [String] :osv 
+    # @option opts [GetOptionsListRequest] :get_options_list_request 
+    # @return [Array<(GetOptionsListResponse, Integer, Hash)>] GetOptionsListResponse data, response status code and response headers
+    def get_options_list_with_http_info(did, access_token, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OptionsApi.get_options_list ...'
+      end
+      # verify the required parameter 'did' is set
+      if @api_client.config.client_side_validation && did.nil?
+        fail ArgumentError, "Missing the required parameter 'did' when calling OptionsApi.get_options_list"
+      end
+      # verify the required parameter 'access_token' is set
+      if @api_client.config.client_side_validation && access_token.nil?
+        fail ArgumentError, "Missing the required parameter 'access_token' when calling OptionsApi.get_options_list"
+      end
+      # resource path
+      local_var_path = '/quote/option/strategy/list'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'did'] = did
+      header_params[:'access_token'] = access_token
+      header_params[:'device-type'] = opts[:'device_type'] if !opts[:'device_type'].nil?
+      header_params[:'hl'] = opts[:'hl'] if !opts[:'hl'].nil?
+      header_params[:'os'] = opts[:'os'] if !opts[:'os'].nil?
+      header_params[:'osv'] = opts[:'osv'] if !opts[:'osv'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'get_options_list_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetOptionsListResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"OptionsApi.get_options_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OptionsApi#get_options_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # getStockOptions
     # @param did [String] Device ID
     # @param access_token [String] Access token

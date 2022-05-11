@@ -10,6 +10,7 @@ All URIs are relative to *https://quoteapi.webull.com/api*
 | [**deprecated_replace_option_order**](OptionsApi.md#deprecated_replace_option_order) | **POST** /v2/option/replaceOrder/{account_id} | replaceOptionOrderDeprecated |
 | [**get_batch_stock_options**](OptionsApi.md#get_batch_stock_options) | **GET** /quote/option/quotes/queryBatch | getBatchStockOptions |
 | [**get_option_quotes**](OptionsApi.md#get_option_quotes) | **GET** /quote/option/query/list | getOptionQuotes |
+| [**get_options_list**](OptionsApi.md#get_options_list) | **POST** /quote/option/strategy/list | getOptionsList |
 | [**get_stock_options**](OptionsApi.md#get_stock_options) | **GET** /quote/option/{stock}/list | getStockOptions |
 | [**list_orders**](OptionsApi.md#list_orders) | **POST** /v1/webull/order/list | listOrders |
 | [**place_option_order**](OptionsApi.md#place_option_order) | **POST** /v1/webull/order/optionPlace | placeOptionOrder |
@@ -399,7 +400,7 @@ require 'webull-api-client-ruby'
 api_instance = WebullApiClient::OptionsApi.new
 did = 'did_example' # String | Device ID
 access_token = 'access_token_example' # String | Access token
-ticker_id = 56 # Integer | tickerId
+ticker_id = 913243251 # Integer | tickerId
 opts = {
   derivative_ids: 8.14 # Float | derivativeIds
 }
@@ -437,7 +438,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
 | **access_token** | **String** | Access token |  |
-| **ticker_id** | **Integer** | tickerId | [default to 913243251] |
+| **ticker_id** | **Integer** | tickerId |  |
 | **derivative_ids** | **Float** | derivativeIds | [optional] |
 
 ### Return type
@@ -451,6 +452,82 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_options_list
+
+> <GetOptionsListResponse> get_options_list(did, access_token, opts)
+
+getOptionsList
+
+### Examples
+
+```ruby
+require 'time'
+require 'webull-api-client-ruby'
+
+api_instance = WebullApiClient::OptionsApi.new
+did = 'did_example' # String | Device ID
+access_token = 'access_token_example' # String | Access token
+opts = {
+  device_type: 'device_type_example', # String | 
+  hl: 'hl_example', # String | 
+  os: 'os_example', # String | 
+  osv: 'osv_example', # String | 
+  get_options_list_request: WebullApiClient::GetOptionsListRequest.new # GetOptionsListRequest | 
+}
+
+begin
+  # getOptionsList
+  result = api_instance.get_options_list(did, access_token, opts)
+  p result
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->get_options_list: #{e}"
+end
+```
+
+#### Using the get_options_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetOptionsListResponse>, Integer, Hash)> get_options_list_with_http_info(did, access_token, opts)
+
+```ruby
+begin
+  # getOptionsList
+  data, status_code, headers = api_instance.get_options_list_with_http_info(did, access_token, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetOptionsListResponse>
+rescue WebullApiClient::ApiError => e
+  puts "Error when calling OptionsApi->get_options_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **did** | **String** | Device ID | [default to &#39;your_device&#39;] |
+| **access_token** | **String** | Access token |  |
+| **device_type** | **String** |  | [optional][default to &#39;Web&#39;] |
+| **hl** | **String** |  | [optional][default to &#39;en&#39;] |
+| **os** | **String** |  | [optional][default to &#39;web&#39;] |
+| **osv** | **String** |  | [optional][default to &#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36&#39;] |
+| **get_options_list_request** | [**GetOptionsListRequest**](GetOptionsListRequest.md) |  | [optional] |
+
+### Return type
+
+[**GetOptionsListResponse**](GetOptionsListResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
