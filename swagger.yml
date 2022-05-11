@@ -1352,6 +1352,7 @@ paths:
                       enum:
                         - dotted1
                         - dotted2
+                        - rayLine
                         - solid
                     lineWidth:
                       type: string

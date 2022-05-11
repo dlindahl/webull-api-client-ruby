@@ -158,7 +158,7 @@ module WebullApiClient
     def valid?
       type_validator = EnumAttributeValidator.new('String', ["horizontal", "vertical"])
       return false unless type_validator.valid?(@type)
-      style_validator = EnumAttributeValidator.new('String', ["dotted1", "dotted2", "solid"])
+      style_validator = EnumAttributeValidator.new('String', ["dotted1", "dotted2", "rayLine", "solid"])
       return false unless style_validator.valid?(@style)
       line_width_validator = EnumAttributeValidator.new('String', ["width1", "width2", "width3", "width4"])
       return false unless line_width_validator.valid?(@line_width)
@@ -182,7 +182,7 @@ module WebullApiClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] style Object to be assigned
     def style=(style)
-      validator = EnumAttributeValidator.new('String', ["dotted1", "dotted2", "solid"])
+      validator = EnumAttributeValidator.new('String', ["dotted1", "dotted2", "rayLine", "solid"])
       unless validator.valid?(style)
         fail ArgumentError, "invalid value for \"style\", must be one of #{validator.allowable_values}."
       end
